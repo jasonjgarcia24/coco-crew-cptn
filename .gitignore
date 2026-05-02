@@ -1,0 +1,18 @@
+# Build pipeline deps (regenerable via phone/build.sh)
+node_modules/
+.build-deps/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# Editor noise
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local secrets (defensive — none expected, but belt-and-suspenders)
+.env
+.env.local
+.env.*.local

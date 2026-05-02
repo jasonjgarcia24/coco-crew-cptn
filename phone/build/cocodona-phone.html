@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="theme-color" content="#202124">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Cocodona 250 — Phone Pack</title>
+<style>
+:root {
+  --bg: #FFFFFF;
+  --fg: #202124;
+  --fg-soft: #5F6368;
+  --accent: #1A73E8;
+  --rule: #DADCE0;
+  --pill-bg: #F1F3F4;
+  --warn: #FCE5CD;
+  --topbar-h: 56px;
+  --toc-h: 52px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1F1F1F;
+    --fg: #E8EAED;
+    --fg-soft: #9AA0A6;
+    --accent: #8AB4F8;
+    --rule: #3C4043;
+    --pill-bg: #292A2D;
+    --warn: #5D4037;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + var(--toc-h) + 8px); }
+body {
+  margin: 0;
+  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-text-size-adjust: 100%;
+  padding-bottom: 6em;
+}
+.topbar {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 10px 16px;
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+}
+.topbar h1 { margin: 0; font-size: 17px; font-weight: 700; }
+.topbar small { font-size: 11px; opacity: 0.7; white-space: nowrap; }
+nav.toc {
+  display: flex; flex-wrap: nowrap; gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  position: sticky; top: var(--topbar-h); z-index: 9;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+nav.toc a {
+  background: var(--pill-bg);
+  color: var(--fg);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 36px;
+  display: inline-flex; align-items: center;
+  flex-shrink: 0;
+}
+nav.toc a:active { background: var(--accent); color: #FFF; }
+main { padding: 0 16px; max-width: 760px; margin: 0 auto; }
+section + section {
+  border-top: 4px solid var(--rule);
+  margin-top: 32px;
+  padding-top: 12px;
+}
+h1, h2, h3 { line-height: 1.25; margin-top: 1.4em; margin-bottom: 0.4em; }
+h1 { font-size: 26px; }
+h2 {
+  font-size: 22px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--rule);
+}
+h3 { font-size: 18px; color: var(--accent); }
+h3 + ul, h3 + p { margin-top: 6px; }
+p, li { font-size: 17px; }
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 4px; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+hr { border: 0; border-top: 4px dashed var(--rule); margin: 24px 0; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px;
+  display: block; overflow-x: auto;
+  margin: 12px 0;
+  border: 1px solid var(--rule);
+  -webkit-overflow-scrolling: touch;
+}
+th, td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+  vertical-align: top;
+}
+th { background: var(--pill-bg); font-weight: 700; }
+tr td:first-child, tr th:first-child { font-weight: 600; }
+.fab {
+  position: fixed; bottom: 18px; right: 18px;
+  background: var(--accent); color: #FFF;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 22px; font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  z-index: 8;
+}
+footer {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--fg-soft);
+  font-size: 13px;
+  border-top: 1px solid var(--rule);
+  margin-top: 32px;
+}
+</style>
+</head>
+<body>
+<a id="top"></a>
+<header class="topbar">
+  <h1>🏃 Cocodona 250</h1>
+  <small>built May 02, 2026, 06:29 AM</small>
+</header>
+<nav class="toc">
+  <a href="#race-brief">📋 Brief</a>
+  <a href="#race-at-a-glance-as-status-conditions-per-leg">🗺️ At-a-glance</a>
+  <a href="#day-1-mon-04-may-start-5-am">DAY 1</a><a href="#day-2-tue-05-may">DAY 2</a><a href="#day-3-wed-06-may">DAY 3</a><a href="#day-4-thu-07-may">DAY 4</a><a href="#day-5-fri-08-may">DAY 5</a><a href="#day-6-sat-09-may-finish-day">DAY 6</a>
+</nav>
+<main>
+  <section id="race-brief">
+    <h1 id="race-brief-phone">📱 RACE BRIEF (phone)</h1>
+<p><strong>Cocodona 250 — solo, no crew, no pacers.</strong>
+Mon 04-May 5 AM → Sat 09-May 10 AM (125 hr cutoff, 253.3 mi).</p>
+<h2 id="target-finish">Target finish</h2>
+<ul>
+<li>🟢 FAST: 55h → Wed 12 PM</li>
+<li>🟡 A-GOAL: 69h → Thu 2 AM ← realistic target</li>
+<li>🔴 B-GOAL: 100h → Fri 9 AM ← worst-acceptable</li>
+</ul>
+<h2 id="top-4-things">Top 4 things</h2>
+<ol>
+<li><strong>Cottonwood → Crown King.</strong> 4 L water leaving CC. 1 L cap at each water station.</li>
+<li><strong>Sleep 2.0h total.</strong> Camp Wamatochick (M67.4) 30m → Sedona Posse (M159.1) 60m → Fort Tuthill (M211.0) 30m. (Mingus = backup only.)</li>
+<li><strong>Fueling floor:</strong> 240 kcal/hr, 500 mg sodium/hr (700+ in extreme heat). Eat through nausea to Crown King.</li>
+<li><strong>6 gear checks:</strong> CK, FR (&gt;10am), SP, MP, FT, WH. Required + Cold Weather Gear on PERSON. DQ otherwise.</li>
+</ol>
+<h2 id="ck-drop-bag-is-dual-purpose">CK drop bag is dual-purpose</h2>
+<p>Crown King bag (M36.6) <strong>also rolls to Fort Tuthill (M211)</strong>. Pack with both stops in mind.</p>
+<h2 id="decision-priority-use-under-fatigue">Decision priority (use under fatigue)</h2>
+<ol>
+<li>Section I hard-pull symptom? → DROP at next AS</li>
+<li>Page in 02-aid-station-atlas/ says X? → do X</li>
+<li>Don&#39;t deliberate. Move.</li>
+</ol>
+<h2 id="dnfing-dnf">DNFing ≠ DNF</h2>
+<p>Drop, sleep, recover, re-enter at SAME AS before sweepers pass. Use the lever before pulling for good.</p>
+<h2 id="heat-ceiling">Heat ceiling</h2>
+<p><strong>HR 165 bpm.</strong> If sustained &gt;165 → walk, ice, drink, restart only after pulse &lt;150.</p>
+<h2 id="fluid-by-condition">Fluid by condition</h2>
+<ul>
+<li>Day moderate: 1.0 L/hr</li>
+<li>Day high effort + hot: 1.25 L/hr</li>
+<li>Night/cold: 0.5 L/hr</li>
+</ul>
+<h2 id="cutoff-math-tod-targets-pick-your-band">Cutoff math (TOD targets — pick your band)</h2>
+<p><strong>FAST/A-GOAL/B-GOAL arrival times per AS:</strong>
+Cottonwood Mon 6:19 AM / 6:38 AM / 7:22 AM (cutoff 9:50 AM)
+CK Mon 2:20 PM / 4:38 PM / 9:57 PM (cutoff 11:55 PM)
+Wamatochick Mon 7:57 PM / 11:47 PM / Tue 8:27 AM (cutoff Tue 4:45 PM)
+Whiskey Mon 10:28 PM / Tue 2:46 AM / Tue 12:23 PM (cutoff Tue 10 PM)
+Watson Mon 11:47 PM / Tue 4:29 AM / Tue 2:56 PM (cutoff Wed 3:30 AM)
+Fain Tue 2:32 AM / 7:55 AM / 7:57 PM (cutoff Wed 6 AM)
+Mingus Tue 5:27 AM / 11:36 AM / Wed 1:22 AM (cutoff Wed 1 PM)
+Jerome Tue 8:59 AM / 3:56 PM / Wed 7:29 AM (cutoff Wed 8:30 PM)
+Dead Horse Tue 10:33 AM / 5:56 PM / Wed 10:24 AM (cutoff Thu 12 AM)
+Deer Pass Tue 1:19 PM / 9:26 PM / Wed 3:33 PM (cutoff Thu 4:45 AM)
+Sedona Posse Tue 3:45 PM / Wed 12:32 AM / Wed 8:05 PM (cutoff Thu 12 PM)
+Schnebly Tue 9:06 PM / Wed 7:07 AM / Thu 5:29 AM (cutoff Thu 9 PM)
+Munds Tue 11:44 PM / Wed 10:27 AM / Thu 10:23 AM (cutoff Fri 2:45 AM)
+Kelly Wed 2:01 AM / 1:22 PM / Thu 2:41 PM (cutoff Fri 8 AM)
+Fort Tuthill Wed 3:26 AM / 3:10 PM / Thu 5:18 PM (cutoff Fri 12:45 PM)
+Walnut Wed 7:02 AM / 7:39 PM / Fri 12:39 AM (cutoff Fri 7:45 PM)
+Wildcat Wed 8:26 AM / 9:27 PM / Fri 2:20 AM (cutoff Fri 10:45 PM)
+Trinity Wed 11:18 AM / Thu 1:06 AM / Fri 7:40 AM (cutoff Sat 8:15 AM)
+<strong>FINISH Wed 12 PM / Thu 2 AM / Fri 9 AM (CUTOFF Sat 10 AM)</strong></p>
+<h2 id="failure-cards-open-if-relevant">Failure cards (open if relevant)</h2>
+<ul>
+<li>🔥 heat-cottonwood-to-crown-king</li>
+<li>🤢 gi-distress</li>
+<li>🌙 sleep-monsters</li>
+<li>🦶 foot-rot</li>
+<li>💧 hyponatremia</li>
+<li>🧭 nav-no-passing-zone</li>
+<li>🧠 low-motivation-late-race</li>
+<li>🎒 gear-check-failure</li>
+<li>🔄 dnf-vs-dnfing</li>
+</ul>
+<p><strong>Mental cue: TODO</strong></p>
+
+  </section>
+  <section id="as-cards">
+    <h1 id="aid-station-cards-phone">📱 AID STATION CARDS (phone)</h1>
+<p><strong>One-line per AS. Scroll fast. Tap into <code>02-aid-station-atlas/</code> for full page.</strong></p>
+<p>Legend: 🎒 drop bag • 💤 sleep • 🚿 shower • ⚕️ medic • ⚠️ gear check
+Targets: 🟢 FAST (55h) · 🟡 A-GOAL (69h)
+Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000&#39;) • 🪨 rocky/technical • ⬆️ steep climb • ⬇️ steep descent</p>
+<hr>
+<h2 id="race-at-a-glance-as-status-conditions-per-leg">🗺️ Race-at-a-glance — AS status + conditions per leg</h2>
+<table>
+<thead>
+<tr>
+<th>AS</th>
+<th>Status</th>
+<th>→ mi</th>
+<th>Conditions</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>00 Start (M0)</td>
+<td>🎒</td>
+<td>7.4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>01 Cottonwood (M7.4)</td>
+<td>⚠️</td>
+<td>25.1</td>
+<td>🔥 🪨 ⬆️ ⬇️</td>
+</tr>
+<tr>
+<td>02 Lane Mtn (M32.5)</td>
+<td>⚕️</td>
+<td>4.1</td>
+<td>⬇️</td>
+</tr>
+<tr>
+<td>03 Crown King (M36.6)</td>
+<td>🎒⚕️⚠️</td>
+<td>14.4</td>
+<td>🥶 ⬆️ ⬇️</td>
+</tr>
+<tr>
+<td>04 Arrastra (M51)</td>
+<td>—</td>
+<td>9.8</td>
+<td>🥶 ⬆️ 🪨 🏔️</td>
+</tr>
+<tr>
+<td>05 Kamp Kipa (M60.8)</td>
+<td>🎒💤</td>
+<td>6.6</td>
+<td>⬇️</td>
+</tr>
+<tr>
+<td>06 Camp Wamatochick (M67.4)</td>
+<td>🎒💤🚿</td>
+<td>8.2</td>
+<td>⬇️</td>
+</tr>
+<tr>
+<td>07 Whiskey Row (M75.6)</td>
+<td>🎒💤⚕️</td>
+<td>7.2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>08 Watson Lake (M82.8)</td>
+<td>—</td>
+<td>13.7</td>
+<td>🪨</td>
+</tr>
+<tr>
+<td>09 Fain Ranch (M96.5)</td>
+<td>🎒⚠️</td>
+<td>10.7</td>
+<td>🔥 🏔️ ⬆️</td>
+</tr>
+<tr>
+<td>10 Mingus (M107.2)</td>
+<td>🎒💤🚿⚕️</td>
+<td>17.0</td>
+<td>🔥 🪨 ⬇️</td>
+</tr>
+<tr>
+<td>11 Jerome (M124.2)</td>
+<td>—</td>
+<td>8.7</td>
+<td>🔥 ⬇️</td>
+</tr>
+<tr>
+<td>12 Dead Horse (M132.9)</td>
+<td>🎒💤🚿⚕️</td>
+<td>14.0</td>
+<td>🪨</td>
+</tr>
+<tr>
+<td>13 Deer Pass (M146.9)</td>
+<td>🎒</td>
+<td>12.2</td>
+<td>🔥</td>
+</tr>
+<tr>
+<td>14 Sedona Posse (M159.1)</td>
+<td>🎒💤⚕️⚠️</td>
+<td>17.0</td>
+<td>🔥 🪨 🏔️ ⬆️</td>
+</tr>
+<tr>
+<td>15 Schnebly (M176.1)</td>
+<td>🎒⚕️</td>
+<td>13.9</td>
+<td>🥶 🏔️</td>
+</tr>
+<tr>
+<td>16 Munds Park (M190.0)</td>
+<td>🎒💤⚕️⚠️</td>
+<td>12.7</td>
+<td>🥶 🪨 🏔️</td>
+</tr>
+<tr>
+<td>17 Kelly Canyon (M202.7)</td>
+<td>—</td>
+<td>8.3</td>
+<td>🥶 🏔️</td>
+</tr>
+<tr>
+<td>18 Fort Tuthill (M211.0)</td>
+<td>🎒💤⚕️⚠️</td>
+<td>16.1</td>
+<td>🥶 🏔️</td>
+</tr>
+<tr>
+<td>19 Walnut Canyon (M227.1)</td>
+<td>🎒⚕️</td>
+<td>7.0</td>
+<td>🥶 🏔️</td>
+</tr>
+<tr>
+<td>20 Wildcat Hill (M234.1)</td>
+<td>🎒⚠️</td>
+<td>15.3</td>
+<td>🥶 🪨 🏔️ ⬆️ ⬇️</td>
+</tr>
+<tr>
+<td>21 Trinity Heights (M249.4)</td>
+<td>—</td>
+<td>3.9</td>
+<td>—</td>
+</tr>
+<tr>
+<td>22 🏁 Finish (M253.3)</td>
+<td>🎒⚕️</td>
+<td>—</td>
+<td>🏁</td>
+</tr>
+</tbody></table>
+<p><strong>Story:</strong> first quarter is 🔥🪨, middle dips back into 🔥, second half is 🥶🏔️ with two technical bookends (Schnebly climb + Mt Elden ascent/descent).</p>
+<hr>
+<h2 id="day-1-mon-04-may-start-5-am">DAY 1 — Mon 04-May (start 5 AM)</h2>
+<h3 id="m0-start-deep-canyon-ranch">M0 · Start: Deep Canyon Ranch · 🎒</h3>
+<ul>
+<li>🟢🟡 5:00 AM Mon - 5:00 AM Mon (mass start)</li>
+<li>⚠️ <strong>4 L water capacity check</strong></li>
+<li>→ Cottonwood +7.4 mi · — (rolling, +1,423/-1,339)</li>
+<li>🎒 next: +36.6 mi → Crown King</li>
+</ul>
+<h3 id="m74-cottonwood-creek">M7.4 · Cottonwood Creek</h3>
+<ul>
+<li>🟢🟡 6:19 AM Mon - 6:38 AM Mon</li>
+<li>⚠️ <strong>Leave w/ 4 L MIN water</strong></li>
+<li>← Start +7.4 mi</li>
+<li>→ Lane Mtn +25.1 mi · 🔥 🪨 +9,518&#39;/-4,856&#39;</li>
+<li>1 L water at M10.4 + M24.6</li>
+<li>🎒 next: +29.2 mi → Crown King</li>
+</ul>
+<h3 id="m325-lane-mtn">M32.5 · Lane Mtn · ⚕️</h3>
+<ul>
+<li>🟢🟡 1:20 PM Mon - 3:21 PM Mon</li>
+<li>← Cottonwood +25.1 mi</li>
+<li>→ Crown King +4.1 mi · +338&#39;/-1,304&#39;</li>
+<li>🎒 next: +4.1 mi → Crown King</li>
+</ul>
+<h3 id="m366-crown-king">M36.6 · Crown King · 🎒⚕️</h3>
+<ul>
+<li>🟢🟡 2:20 PM Mon - 4:38 PM Mon</li>
+<li><strong>Dropbag rolls to Fort Tuthill M211</strong></li>
+<li>⚠️ <strong>Full kit check: Required + Cold Weather Gear</strong></li>
+<li>← Lane Mtn +4.1 mi</li>
+<li>→ Arrastra +14.4 mi · 🥶 +2,005&#39;/-2,524&#39;</li>
+<li>🎒 next: +24.2 mi → Kamp Kipa</li>
+</ul>
+<hr>
+<h2 id="day-2-tue-05-may">DAY 2 — Tue 05-May</h2>
+<h3 id="m51-arrastra-creek">M51 · Arrastra Creek</h3>
+<ul>
+<li>🟢🟡 4:51 PM Mon - 7:50 PM Mon</li>
+<li>Pass-through, refuel</li>
+<li>← Crown King +14.4 mi</li>
+<li>→ Kamp Kipa +9.8 mi · 🥶 +3,012&#39;/-841&#39; 🪨 🏔️</li>
+<li>🎒 next: +9.8 mi → Kamp Kipa</li>
+</ul>
+<h3 id="m608-kamp-kipa">M60.8 · Kamp Kipa · 🎒💤</h3>
+<ul>
+<li>🟢🟡 6:39 PM Mon - 10:06 PM Mon</li>
+<li>Indoor sleep (NOT used in plan)</li>
+<li>← Arrastra +9.8 mi</li>
+<li>→ Camp Wamatochick +6.6 mi · +481&#39;/-1,503&#39;</li>
+<li>🎒 next: +6.6 mi → Camp Wamatochick</li>
+</ul>
+<h3 id="m674-camp-wamatochick">M67.4 · Camp Wamatochick · 🎒💤🚿</h3>
+<ul>
+<li>🟢🟡 7:57 PM Mon - 11:47 PM Mon</li>
+<li><strong>30 min sleep</strong></li>
+<li>← Kamp Kipa +6.6 mi</li>
+<li>→ Whiskey Row +8.2 mi · +438&#39;/-1,491&#39;</li>
+<li>🎒 next: +8.2 mi → Whiskey Row</li>
+</ul>
+<h3 id="m756-whiskey-row">M75.6 · Whiskey Row · 🎒💤⚕️</h3>
+<ul>
+<li>🟢🟡 10:28 PM Mon - 2:46 AM Tue</li>
+<li>Indoor sleep (NOT used in plan)</li>
+<li>← Camp Wamatochick +8.2 mi</li>
+<li>→ Watson Lake +7.2 mi</li>
+<li>🎒 next: +20.9 mi → Fain Ranch</li>
+</ul>
+<hr>
+<h2 id="day-3-wed-06-may">DAY 3 — Wed 06-May</h2>
+<h3 id="m828-watson-lake">M82.8 · Watson Lake</h3>
+<ul>
+<li>🟢🟡 11:47 PM Mon - 4:29 AM Tue</li>
+<li>Pass-through</li>
+<li>← Whiskey Row +7.2 mi</li>
+<li>→ Fain Ranch +13.7 mi · 🪨 (Granite Dells)</li>
+<li>🎒 next: +13.7 mi → Fain Ranch</li>
+</ul>
+<h3 id="m965-fain-ranch">M96.5 · Fain Ranch · 🎒</h3>
+<ul>
+<li>🟢🟡 2:32 AM Tue - 7:55 AM Tue</li>
+<li>⚠️ <strong>Full kit check</strong> — IF leaving after 10 AM</li>
+<li>← Watson Lake +13.7 mi</li>
+<li>→ Mingus +10.7 mi · 🔥 🏔️ +2,862&#39;/-284&#39; (altitude ~7,800&#39;)</li>
+<li>🎒 next: +10.7 mi → Mingus</li>
+</ul>
+<h3 id="m1072-mingus-mountain-780039">M107.2 · Mingus Mountain (~7,800&#39;) · 🎒💤🚿⚕️</h3>
+<ul>
+<li>🟢🟡 5:27 AM Tue - 11:36 AM Tue</li>
+<li>Indoor sleep (NOT used in plan)</li>
+<li>← Fain Ranch +10.7 mi</li>
+<li>→ Jerome +17.0 mi · 🔥 🪨 +1,750&#39;/-4,428&#39;</li>
+<li>🎒 next: +25.7 mi → Dead Horse</li>
+</ul>
+<h3 id="m1242-jerome">M124.2 · Jerome</h3>
+<ul>
+<li>🟢🟡 8:59 AM Tue - 3:56 PM Tue</li>
+<li>Pass-through</li>
+<li>← Mingus +17.0 mi</li>
+<li>→ Dead Horse +8.7 mi · 🔥 +356&#39;/-1,976&#39; (Verde River)</li>
+<li>🎒 next: +8.7 mi → Dead Horse</li>
+</ul>
+<h3 id="m1329-dead-horse">M132.9 · Dead Horse · 🎒💤🚿⚕️</h3>
+<ul>
+<li>🟢🟡 10:33 AM Tue - 5:56 PM Tue</li>
+<li>Outdoor sleep (NOT used in plan)</li>
+<li>← Jerome +8.7 mi</li>
+<li>→ Deer Pass +14.0 mi · 🪨</li>
+<li>🎒 next: +14.0 mi → Deer Pass</li>
+</ul>
+<hr>
+<h2 id="day-4-thu-07-may">DAY 4 — Thu 07-May</h2>
+<h3 id="m1469-deer-pass">M146.9 · Deer Pass · 🎒</h3>
+<ul>
+<li>🟢🟡 1:19 PM Tue - 9:26 PM Tue</li>
+<li>← Dead Horse +14.0 mi</li>
+<li>→ Sedona Posse +12.2 mi · 🔥 (water station M153.6)</li>
+<li>🎒 next: +12.2 mi → Sedona Posse</li>
+</ul>
+<h3 id="m1591-sedona-posse">M159.1 · Sedona Posse · 🎒💤⚕️</h3>
+<ul>
+<li>🟢🟡 3:45 PM Tue - 12:32 AM Wed</li>
+<li><strong>60 min sleep</strong></li>
+<li>⚠️ <strong>Full kit check</strong></li>
+<li>← Deer Pass +12.2 mi</li>
+<li>→ Schnebly Hill +17.0 mi · 🔥 🪨 🏔️ +3,580&#39;/-1,628&#39; (altitude ~7,000&#39;)</li>
+<li>🎒 next: +17.0 mi → Schnebly Hill</li>
+</ul>
+<h3 id="m1761-schnebly-hill">M176.1 · Schnebly Hill · 🎒⚕️</h3>
+<ul>
+<li>🟢🟡 9:06 PM Tue - 7:07 AM Wed</li>
+<li>Drop bag + medic (no sleep here)</li>
+<li>← Sedona Posse +17.0 mi</li>
+<li>→ Munds Park +13.9 mi · 🥶 🏔️ (Coconino Plateau, upper-30s°F)</li>
+<li>🎒 next: +13.9 mi → Munds Park</li>
+</ul>
+<hr>
+<h2 id="day-5-fri-08-may">DAY 5 — Fri 08-May</h2>
+<h3 id="m1900-munds-park">M190.0 · Munds Park · 🎒💤⚕️</h3>
+<ul>
+<li>🟢🟡 11:44 PM Tue - 10:27 AM Wed</li>
+<li>Outdoor sleep (NOT used in plan)</li>
+<li>⚠️ <strong>Full kit check</strong></li>
+<li>← Schnebly +13.9 mi</li>
+<li>→ Kelly Canyon +12.7 mi · 🥶 🪨 🏔️</li>
+<li>🎒 next: +21.0 mi → Fort Tuthill</li>
+</ul>
+<h3 id="m2027-kelly-canyon">M202.7 · Kelly Canyon</h3>
+<ul>
+<li>🟢🟡 2:01 AM Wed - 1:22 PM Wed</li>
+<li>Pass-through</li>
+<li>← Munds +12.7 mi</li>
+<li>→ Fort Tuthill +8.3 mi · 🥶 🏔️</li>
+<li>🎒 next: +8.3 mi → Fort Tuthill</li>
+</ul>
+<h3 id="m2110-fort-tuthill">M211.0 · Fort Tuthill · 🎒💤⚕️</h3>
+<ul>
+<li>🟢🟡 3:26 AM Wed - 3:10 PM Wed</li>
+<li><strong>30 min sleep</strong></li>
+<li>⚠️ <strong>Full kit check</strong></li>
+<li>⚠️ <strong>Mandatory medic</strong> • Last big AS — EAT!!</li>
+<li>← Kelly +8.3 mi</li>
+<li>→ Walnut Canyon +16.1 mi · 🥶 🏔️</li>
+<li>🎒 next: +16.1 mi → Walnut Canyon</li>
+</ul>
+<h3 id="m2271-walnut-canyon">M227.1 · Walnut Canyon · 🎒⚕️</h3>
+<ul>
+<li>🟢🟡 7:02 AM Wed - 7:39 PM Wed</li>
+<li>← Fort Tuthill +16.1 mi</li>
+<li>→ Wildcat +7.0 mi · 🥶 🏔️</li>
+<li>🎒 next: +7.0 mi → Wildcat Hill</li>
+</ul>
+<h3 id="m2341-wildcat-hill">M234.1 · Wildcat Hill · 🎒</h3>
+<ul>
+<li>🟢🟡 8:26 AM Wed - 9:27 PM Wed</li>
+<li>⚠️ <strong>Last full kit check</strong></li>
+<li>← Walnut +7.0 mi</li>
+<li>→ Trinity +15.3 mi · 🥶 🪨 🏔️ +3,386&#39;/-3,055&#39; (altitude 9,000&#39;)</li>
+<li>🎒 next: +19.2 mi → Finish</li>
+</ul>
+<hr>
+<h2 id="day-6-sat-09-may-finish-day">DAY 6 — Sat 09-May (finish day)</h2>
+<h3 id="m2494-trinity-heights">M249.4 · Trinity Heights</h3>
+<ul>
+<li>🟢🟡 11:18 AM Wed - 1:06 AM Thu</li>
+<li>Last AS, push 3.9 mi</li>
+<li>← Wildcat +15.3 mi</li>
+<li>→ 🏁 FINISH +3.9 mi · — (urban gentle)</li>
+<li>🎒 next: +3.9 mi → Finish</li>
+</ul>
+<h3 id="m2533-heritage-square-finish">M253.3 · 🏁 Heritage Square FINISH · 🎒⚕️</h3>
+<ul>
+<li>← Trinity +3.9 mi</li>
+<li>🟢🟡 12:00 PM Wed - 2:00 AM Thu</li>
+<li>🏁 You&#39;re done!!</li>
+</ul>
+
+  </section>
+</main>
+<a class="fab" href="#top" aria-label="Back to top">⬆</a>
+<footer>
+  Solo · crewless · pacerless · offline-pack vMay 02, 2026, 06:29 AM
+</footer>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "cocodona-phone-render",
+  "private": true,
+  "type": "module",
+  "description": "Build script for the offline-ready phone HTML pack. Not shipped — local build only.",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "marked": "^14.0.0"
+  }
+}
