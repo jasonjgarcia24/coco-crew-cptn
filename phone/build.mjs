@@ -1,25 +1,27 @@
-// phone/build.mjs — renders phone/*.md into a single self-contained HTML file
+// phone/build.mjs — renders phone/*.md into a single self-contained HTML
 // optimized for Android Chrome on a Pixel. Inline CSS, no JS deps, no network.
-// Anchor IDs auto-generated on every heading so the TOC + table cells can deep-link.
+//
+// Structure: two collapsible top-level sections (Aid Station Cards, Race Brief).
+// H2 sub-sections inside each are also collapsible. Default open, except "Legend"
+// (default closed). Anchors are placed on <details> elements so clicking a TOC
+// link auto-opens the collapsed section in modern Chrome.
 
 import { marked } from 'marked';
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 
 marked.setOptions({ gfm: true, breaks: false });
 
-// Slugify a heading's text for use as an anchor id.
 function slugify(text) {
   return text.toLowerCase()
-    .replace(/<[^>]+>/g, '')        // strip inline html
-    .replace(/&[a-z]+;/g, '')       // strip html entities
-    .replace(/[^\w\s-]/g, '')       // drop punctuation/emoji
+    .replace(/<[^>]+>/g, '')
+    .replace(/&[a-z]+;/g, '')
+    .replace(/[^\w\s-]/g, '')
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .substring(0, 60);
 }
 
-// Walk rendered HTML and add id="..." to every heading.
 function addHeadingIds(html) {
   return html.replace(/<h([1-6])>(.+?)<\/h\1>/g, (_, level, inner) => {
     const slug = slugify(inner);
@@ -27,7 +29,31 @@ function addHeadingIds(html) {
   });
 }
 
-// Extract h2 headings from raw markdown so we can build the TOC.
+// Wrap each H2 section in <details> so it's collapsible. The id moves from the
+// h2 to the <details> so anchor links auto-open the section.
+//
+// Note: JS String.split with a position-0 lookahead does NOT emit a leading
+// empty string, so we have to detect whether parts[0] is itself an H2 section.
+function wrapH2InDetails(html) {
+  const parts = html.split(/(?=<h2\b)/);
+  if (parts.length === 0) return html;
+  const firstIsH2 = parts[0].startsWith('<h2');
+  const head = firstIsH2 ? '' : parts[0];
+  const sectionParts = firstIsH2 ? parts : parts.slice(1);
+  const sections = sectionParts.map(part => {
+    const m = part.match(/^<h2\b[^>]*\bid="([^"]+)"[^>]*>([\s\S]*?)<\/h2>([\s\S]*)$/);
+    if (!m) return part;
+    const [, id, h2text, body] = m;
+    const isLegend = /legend/i.test(h2text);
+    const openAttr = isLegend ? '' : ' open';
+    return `<details${openAttr} class="h2-section" id="${id}">` +
+      `<summary class="h2-summary"><h2>${h2text}</h2></summary>` +
+      `<div class="h2-body">${body}</div>` +
+      `</details>`;
+  });
+  return head + sections.join('');
+}
+
 function extractH2(md) {
   return md.split('\n')
     .filter(l => /^## /.test(l))
@@ -38,20 +64,15 @@ function extractH2(md) {
 const briefMd = readFileSync('race-brief-phone.md', 'utf8');
 const cardsMd = readFileSync('as-cards-phone.md', 'utf8');
 
-const briefHtml = addHeadingIds(marked.parse(briefMd));
-const cardsHtml = addHeadingIds(marked.parse(cardsMd));
+const briefHtml = wrapH2InDetails(addHeadingIds(marked.parse(briefMd)));
+const cardsHtml = wrapH2InDetails(addHeadingIds(marked.parse(cardsMd)));
 
-const cardH2 = extractH2(cardsMd);
-const glanceItem = cardH2.find(h => /Race-at-a-glance/i.test(h.text));
-const glanceSlug = glanceItem ? glanceItem.slug : 'as-cards';
-
-const dayLinks = cardH2
-  .filter(h => /^DAY \d/i.test(h.text))
-  .map(h => {
-    const short = h.text.replace(/—.*$/, '').trim();  // "DAY 1"
-    return `<a href="#${h.slug}">${short}</a>`;
-  })
-  .join('');
+// TOC: phase pills derived from H2 headings whose text starts with a phase emoji.
+const phaseH2s = extractH2(cardsMd).filter(h => /^[🔥🥶]/.test(h.text));
+const phaseLinks = phaseH2s.map(h => {
+  const short = h.text.replace(/\s—.*$/, '').trim();
+  return `<a href="#${h.slug}">${short}</a>`;
+}).join('');
 
 const builtAt = new Date().toLocaleString('en-US', {
   timeZone: 'America/Los_Angeles',
@@ -67,8 +88,8 @@ const css = `
   --accent: #1A73E8;
   --rule: #DADCE0;
   --pill-bg: #F1F3F4;
-  --warn: #FCE5CD;
-  --topbar-h: 56px;
+  --section-bg: #F8F9FA;
+  --topbar-h: 48px;
   --toc-h: 52px;
 }
 @media (prefers-color-scheme: dark) {
@@ -79,7 +100,7 @@ const css = `
     --accent: #8AB4F8;
     --rule: #3C4043;
     --pill-bg: #292A2D;
-    --warn: #5D4037;
+    --section-bg: #2A2A2A;
   }
 }
 * { box-sizing: border-box; }
@@ -97,11 +118,11 @@ body {
   color: var(--bg);
   padding: 10px 16px;
   position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 12px;
+  height: var(--topbar-h);
+  display: flex; align-items: center; gap: 12px;
 }
-.topbar h1 { margin: 0; font-size: 17px; font-weight: 700; }
-.topbar small { font-size: 11px; opacity: 0.7; white-space: nowrap; }
+.topbar h1 { margin: 0; font-size: 17px; font-weight: 700; flex: 1; }
+.topbar small { font-size: 11px; opacity: 0.7; }
 nav.toc {
   display: flex; flex-wrap: nowrap; gap: 6px;
   padding: 8px 12px;
@@ -110,6 +131,8 @@ nav.toc {
   position: sticky; top: var(--topbar-h); z-index: 9;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  height: var(--toc-h);
+  align-items: center;
 }
 nav.toc a {
   background: var(--pill-bg);
@@ -124,43 +147,86 @@ nav.toc a {
   flex-shrink: 0;
 }
 nav.toc a:active { background: var(--accent); color: #FFF; }
-main { padding: 0 16px; max-width: 760px; margin: 0 auto; }
-section + section {
-  border-top: 4px solid var(--rule);
-  margin-top: 32px;
-  padding-top: 12px;
+main { padding: 0 12px; max-width: 760px; margin: 0 auto; }
+
+/* Disclosure marker — single style for all <summary>. */
+summary { cursor: pointer; user-select: none; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.4em;
+  font-size: 0.85em;
+  opacity: 0.7;
+  transition: transform 0.15s ease;
+  transform-origin: center;
 }
-h1, h2, h3 { line-height: 1.25; margin-top: 1.4em; margin-bottom: 0.4em; }
-h1 { font-size: 26px; }
-h2 {
-  font-size: 22px;
-  padding-bottom: 4px;
+details[open] > summary::before { transform: rotate(90deg); }
+
+/* Top-level section (Aid Station Cards / Race Brief) */
+.top-section {
+  margin: 16px 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--section-bg);
+  overflow: hidden;
+}
+.top-summary {
+  padding: 12px 14px;
+  font-size: 18px;
+  font-weight: 700;
+  background: var(--fg);
+  color: var(--bg);
+}
+.top-summary::before { color: var(--bg); }
+.top-body { padding: 4px 12px 12px; background: var(--bg); }
+
+/* Nested H2 collapsible section */
+.h2-section { margin: 12px 0; }
+.h2-summary {
+  padding: 8px 0 4px;
   border-bottom: 2px solid var(--rule);
 }
-h3 { font-size: 18px; color: var(--accent); }
-h3 + ul, h3 + p { margin-top: 6px; }
-p, li { font-size: 17px; }
-ul, ol { padding-left: 22px; }
-li { margin-bottom: 4px; }
+.h2-summary h2 {
+  display: inline;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.h2-body { padding-top: 6px; }
+
+h3 {
+  font-size: 17px;
+  color: var(--accent);
+  margin: 16px 0 4px;
+  line-height: 1.3;
+}
+h3 + ul, h3 + p { margin-top: 4px; }
+p, li { font-size: 16px; }
+ul, ol { padding-left: 22px; margin: 4px 0 12px; }
+li { margin-bottom: 3px; }
 strong { font-weight: 700; }
 em { font-style: italic; }
-hr { border: 0; border-top: 4px dashed var(--rule); margin: 24px 0; }
+hr { border: 0; border-top: 2px dashed var(--rule); margin: 16px 0; }
+
 table {
   width: 100%; border-collapse: collapse;
-  font-size: 14px;
+  font-size: 13px;
   display: block; overflow-x: auto;
-  margin: 12px 0;
+  margin: 8px 0;
   border: 1px solid var(--rule);
   -webkit-overflow-scrolling: touch;
 }
 th, td {
-  padding: 6px 8px;
+  padding: 5px 7px;
   border-bottom: 1px solid var(--rule);
   white-space: nowrap;
   vertical-align: top;
 }
 th { background: var(--pill-bg); font-weight: 700; }
 tr td:first-child, tr th:first-child { font-weight: 600; }
+
 .fab {
   position: fixed; bottom: 18px; right: 18px;
   background: var(--accent); color: #FFF;
@@ -171,14 +237,6 @@ tr td:first-child, tr th:first-child { font-weight: 600; }
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   z-index: 8;
 }
-footer {
-  text-align: center;
-  padding: 24px 16px;
-  color: var(--fg-soft);
-  font-size: 13px;
-  border-top: 1px solid var(--rule);
-  margin-top: 32px;
-}
 `;
 
 const html = `<!DOCTYPE html>
@@ -187,34 +245,32 @@ const html = `<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <meta name="theme-color" content="#202124">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<title>Cocodona 250 — Phone Pack</title>
+<title>Cocodona 250</title>
 <style>${css}</style>
 </head>
 <body>
 <a id="top"></a>
 <header class="topbar">
   <h1>🏃 Cocodona 250</h1>
-  <small>built ${builtAt}</small>
+  <small>${builtAt}</small>
 </header>
 <nav class="toc">
+  <a href="#race-at-a-glance">🗺️ Glance</a>
+  ${phaseLinks}
   <a href="#race-brief">📋 Brief</a>
-  <a href="#${glanceSlug}">🗺️ At-a-glance</a>
-  ${dayLinks}
 </nav>
 <main>
-  <section id="race-brief">
-    ${briefHtml}
-  </section>
-  <section id="as-cards">
-    ${cardsHtml}
-  </section>
+  <details open class="top-section" id="aid-station-cards">
+    <summary class="top-summary">🗺️ Aid Station Cards</summary>
+    <div class="top-body">${cardsHtml}</div>
+  </details>
+  <details open class="top-section" id="race-brief">
+    <summary class="top-summary">📋 Race Brief</summary>
+    <div class="top-body">${briefHtml}</div>
+  </details>
 </main>
 <a class="fab" href="#top" aria-label="Back to top">⬆</a>
-<footer>
-  Solo · crewless · pacerless · offline-pack v${builtAt}
-</footer>
 </body>
 </html>
 `;

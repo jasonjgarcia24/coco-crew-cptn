@@ -1,15 +1,10 @@
-# 📱 AID STATION CARDS (phone)
+## 🟢 Legend
 
-**One-line per AS. Scroll fast. Tap into `02-aid-station-atlas/` for full page.**
+- 🎒 drop bag · 💤 sleep · 🚿 shower · ⚕️ medic · ⚠️ gear check
+- 🟢 FAST (55h) · 🟡 A-GOAL (69h)
+- 🔥 hot · 🥶 cold · 🏔️ high alt (≥7,000') · 🪨 rocky/technical · ⬆️ steep climb · ⬇️ steep descent
 
-Legend: 🎒 drop bag • 💤 sleep • 🚿 shower • ⚕️ medic • ⚠️ gear check
-Targets: 🟢 FAST (55h) · 🟡 A-GOAL (69h)
-Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • 🪨 rocky/technical • ⬆️ steep climb • ⬇️ steep descent
-
----
-
-## 🗺️ Race-at-a-glance — AS status + conditions per leg
-
+## 🗺️ Race at a glance
 
 | AS                          | Status       | → mi  | Conditions           |
 | ----------------------------- | -------------- | ------- | ---------------------- |
@@ -37,11 +32,7 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 | 21 Trinity Heights (M249.4) | —           | 3.9    | —                   |
 | 22 🏁 Finish (M253.3)       | 🎒⚕️       | —      | 🏁                   |
 
-**Story:** first quarter is 🔥🪨, middle dips back into 🔥, second half is 🥶🏔️ with two technical bookends (Schnebly climb + Mt Elden ascent/descent).
-
----
-
-## DAY 1 — Mon 04-May (start 5 AM)
+## 🔥🪨 Hot opening — Start to Crown King
 
 ### M0 · Start: Deep Canyon Ranch · 🎒
 
@@ -75,9 +66,7 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - → Arrastra +14.4 mi · 🥶 +2,005'/-2,524'
 - 🎒 next: +24.2 mi → Kamp Kipa
 
----
-
-## DAY 2 — Tue 05-May
+## 🥶 Bradshaws — Arrastra to Fain Ranch
 
 ### M51 · Arrastra Creek
 
@@ -111,10 +100,6 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - → Watson Lake +7.2 mi
 - 🎒 next: +20.9 mi → Fain Ranch
 
----
-
-## DAY 3 — Wed 06-May
-
 ### M82.8 · Watson Lake
 
 - 🟢🟡 11:47 PM Mon - 4:29 AM Tue
@@ -130,6 +115,8 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - ← Watson Lake +13.7 mi
 - → Mingus +10.7 mi · 🔥 🏔️ +2,862'/-284' (altitude ~7,800')
 - 🎒 next: +10.7 mi → Mingus
+
+## 🔥 Verde Valley & Sedona — Mingus to Sedona Posse
 
 ### M107.2 · Mingus Mountain (~7,800') · 🎒💤🚿⚕️
 
@@ -155,10 +142,6 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - → Deer Pass +14.0 mi · 🪨
 - 🎒 next: +14.0 mi → Deer Pass
 
----
-
-## DAY 4 — Thu 07-May
-
 ### M146.9 · Deer Pass · 🎒
 
 - 🟢🟡 1:19 PM Tue - 9:26 PM Tue
@@ -175,6 +158,8 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - → Schnebly Hill +17.0 mi · 🔥 🪨 🏔️ +3,580'/-1,628' (altitude ~7,000')
 - 🎒 next: +17.0 mi → Schnebly Hill
 
+## 🥶🏔️ Cold mountains & finish — Schnebly to Heritage Sq
+
 ### M176.1 · Schnebly Hill · 🎒⚕️
 
 - 🟢🟡 9:06 PM Tue - 7:07 AM Wed
@@ -182,10 +167,6 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - ← Sedona Posse +17.0 mi
 - → Munds Park +13.9 mi · 🥶 🏔️ (Coconino Plateau, upper-30s°F)
 - 🎒 next: +13.9 mi → Munds Park
-
----
-
-## DAY 5 — Fri 08-May
 
 ### M190.0 · Munds Park · 🎒💤⚕️
 
@@ -228,10 +209,6 @@ Conditions ahead: 🔥 hot • 🥶 cold • 🏔️ high alt (≥7,000') • �
 - ← Walnut +7.0 mi
 - → Trinity +15.3 mi · 🥶 🪨 🏔️ +3,386'/-3,055' (altitude 9,000')
 - 🎒 next: +19.2 mi → Finish
-
----
-
-## DAY 6 — Sat 09-May (finish day)
 
 ### M249.4 · Trinity Heights
 
