@@ -81,7 +81,11 @@ const builtAt = new Date().toLocaleString('en-US', {
 });
 
 const css = `
+/* Force light mode regardless of OS setting — designed for desert-sun
+   readability. color-scheme on :root tells the browser to render scrollbars,
+   form controls, and other UA-supplied chrome in light mode too. */
 :root {
+  color-scheme: light;
   --bg: #FFFFFF;
   --fg: #202124;
   --fg-soft: #5F6368;
@@ -91,17 +95,6 @@ const css = `
   --section-bg: #F8F9FA;
   --topbar-h: 48px;
   --toc-h: 52px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1F1F1F;
-    --fg: #E8EAED;
-    --fg-soft: #9AA0A6;
-    --accent: #8AB4F8;
-    --rule: #3C4043;
-    --pill-bg: #292A2D;
-    --section-bg: #2A2A2A;
-  }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + var(--toc-h) + 8px); }

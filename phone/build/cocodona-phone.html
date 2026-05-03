@@ -7,7 +7,11 @@
 <meta name="mobile-web-app-capable" content="yes">
 <title>Cocodona 250</title>
 <style>
+/* Force light mode regardless of OS setting — designed for desert-sun
+   readability. color-scheme on :root tells the browser to render scrollbars,
+   form controls, and other UA-supplied chrome in light mode too. */
 :root {
+  color-scheme: light;
   --bg: #FFFFFF;
   --fg: #202124;
   --fg-soft: #5F6368;
@@ -17,17 +21,6 @@
   --section-bg: #F8F9FA;
   --topbar-h: 48px;
   --toc-h: 52px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1F1F1F;
-    --fg: #E8EAED;
-    --fg-soft: #9AA0A6;
-    --accent: #8AB4F8;
-    --rule: #3C4043;
-    --pill-bg: #292A2D;
-    --section-bg: #2A2A2A;
-  }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + var(--toc-h) + 8px); }
@@ -169,7 +162,7 @@ tr td:first-child, tr th:first-child { font-weight: 600; }
 <a id="top"></a>
 <header class="topbar">
   <h1>🏃 Cocodona 250</h1>
-  <small>May 02, 2026, 07:38 AM</small>
+  <small>May 02, 2026, 07:28 PM</small>
 </header>
 <nav class="toc">
   <a href="#race-at-a-glance">🗺️ Glance</a>
