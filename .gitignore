@@ -16,3 +16,7 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Per-user gear sheet config — points at a published-to-web CSV URL,
+# which is harmless on its own but is user-specific so should not ship.
+phone/.gear-csv-url

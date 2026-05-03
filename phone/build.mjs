@@ -7,9 +7,42 @@
 // link auto-opens the collapsed section in modern Chrome.
 
 import { marked } from 'marked';
-import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 
 marked.setOptions({ gfm: true, breaks: false });
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Minimal CSV parser. Handles quoted fields with embedded commas/newlines/
+// doubled-up double-quotes ("" → ").
+function parseCSV(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') inQuotes = false;
+      else cell += c;
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ',') { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (c === '\r') { /* skip */ }
+      else cell += c;
+    }
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
 
 function slugify(text) {
   return text.toLowerCase()
@@ -42,7 +75,7 @@ function extractMileSlug(text) {
 // fresh from "odd". Used to make adjacent aid stations visually separable
 // under fatigue. Also stamps `data-as="<mile-slug>"` so the card is
 // clickable and syncs with its matching at-a-glance row.
-function wrapCardsInBody(body) {
+function wrapCardsInBody(body, gearData) {
   const parts = body.split(/(?=<h3\b)/);
   if (parts.length === 0) return body;
   const firstIsH3 = parts[0].startsWith('<h3');
@@ -54,7 +87,8 @@ function wrapCardsInBody(body) {
     const h3match = card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/);
     const slug = h3match ? extractMileSlug(h3match[1]) : null;
     const dataAttr = slug ? ` data-as="${slug}"` : '';
-    return `<div class="${cls}"${dataAttr}>${card}</div>`;
+    const gear = (gearData && slug) ? renderGearSection(gearData.get(slug)) : '';
+    return `<div class="${cls}"${dataAttr}>${card}${gear}</div>`;
   });
   return head + cards.join('');
 }
@@ -68,12 +102,103 @@ function addTableRowIds(html) {
   });
 }
 
+// === Gear Checklist sync ===
+// Loads the Drop Bag rows from the user's Gear Checklist CSV (exported from
+// the Pacing Chart spreadsheet) and groups them by mile-slug so we can inject
+// a default-closed "Drop bag" details into each AS card during render.
+
+// The gear sheet's Drop Bag AS column is free-text from a dropdown like
+// "Crown King M36.6". Extract the mile marker to get the same slug used by
+// the AS cards. Special-case "Start (direct-to-finish)" → m0.
+function gearAsToSlug(asText) {
+  if (!asText) return null;
+  if (/^start\b/i.test(asText.trim())) return 'm0';
+  return extractMileSlug(asText);
+}
+
+// Column layout matches buildGearChecklist() in live/pacing-chart-apps-script.gs:
+//   A: Item, B: Category, C: Qty (this row), D: Initial Pack,
+//   E: Race Day Carry, F: Drop Bag, G: Drop Bag AS, H: Notes, I: Item Total
+function parseGearCSV(csv) {
+  const rows = parseCSV(csv);
+  const groups = new Map();
+  for (let i = 1; i < rows.length; i++) {  // skip header row
+    const r = rows[i];
+    if (!r || !r[0]) continue;
+    if (String(r[5] || '').toUpperCase() !== 'TRUE') continue;  // F = Drop Bag ☐
+    const slug = gearAsToSlug(r[6]);                            // G = Drop Bag AS
+    if (!slug) continue;
+    if (!groups.has(slug)) groups.set(slug, []);
+    groups.get(slug).push({
+      item: r[0] || '',
+      qty: r[2] || '',
+      notes: r[7] || '',
+    });
+  }
+  return groups;
+}
+
+// Two paths to get the CSV:
+//   1. Auto-fetch from a published-to-web URL (PHONE_GEAR_CSV_URL env var
+//      or `.gear-csv-url` file in phone/) — true sync, needs internet at build.
+//   2. Local file at `phone/gear-checklist.csv` — drop in via manual sheet
+//      export, fully offline.
+// Falls back silently if neither is present.
+async function loadGearData() {
+  let csv = null;
+  let source = null;
+
+  let url = process.env.PHONE_GEAR_CSV_URL;
+  if (!url && existsSync('.gear-csv-url')) {
+    url = readFileSync('.gear-csv-url', 'utf8').trim();
+  }
+  if (url) {
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        csv = await res.text();
+        source = 'published-to-web URL';
+      } else {
+        console.warn(`  × Gear CSV fetch failed: HTTP ${res.status}`);
+      }
+    } catch (e) {
+      console.warn(`  × Gear CSV fetch error: ${e.message}`);
+    }
+  }
+  if (!csv && existsSync('gear-checklist.csv')) {
+    csv = readFileSync('gear-checklist.csv', 'utf8');
+    source = 'gear-checklist.csv';
+  }
+  if (!csv) {
+    console.log('  · No gear data — drop-bag sections skipped');
+    return new Map();
+  }
+  const groups = parseGearCSV(csv);
+  let total = 0;
+  groups.forEach(items => total += items.length);
+  console.log(`  · Gear data: ${total} drop-bag items across ${groups.size} aid stations (from ${source})`);
+  return groups;
+}
+
+function renderGearSection(items) {
+  if (!items || items.length === 0) return '';
+  const lis = items.map(it => {
+    const qty = it.qty ? ` <span class="gear-qty">×${escapeHtml(it.qty)}</span>` : '';
+    const notes = it.notes ? ` <em class="gear-notes">${escapeHtml(it.notes)}</em>` : '';
+    return `<li><strong>${escapeHtml(it.item)}</strong>${qty}${notes}</li>`;
+  }).join('');
+  return `<details class="gear-section">` +
+    `<summary class="gear-summary">🎒 Drop bag (${items.length} ${items.length === 1 ? 'item' : 'items'})</summary>` +
+    `<ul class="gear-list">${lis}</ul>` +
+    `</details>`;
+}
+
 // Wrap each H2 section in <details> so it's collapsible. The id moves from the
 // h2 to the <details> so anchor links auto-open the section.
 //
 // Note: JS String.split with a position-0 lookahead does NOT emit a leading
 // empty string, so we have to detect whether parts[0] is itself an H2 section.
-function wrapH2InDetails(html) {
+function wrapH2InDetails(html, gearData) {
   const parts = html.split(/(?=<h2\b)/);
   if (parts.length === 0) return html;
   const firstIsH2 = parts[0].startsWith('<h2');
@@ -87,7 +212,7 @@ function wrapH2InDetails(html) {
     const openAttr = isLegend ? '' : ' open';
     return `<details${openAttr} class="h2-section" id="${id}">` +
       `<summary class="h2-summary"><h2>${h2text}</h2></summary>` +
-      `<div class="h2-body">${wrapCardsInBody(body)}</div>` +
+      `<div class="h2-body">${wrapCardsInBody(body, gearData)}</div>` +
       `</details>`;
   });
   return head + sections.join('');
@@ -103,8 +228,13 @@ function extractH2(md) {
 const briefMd = readFileSync('race-brief-phone.md', 'utf8');
 const cardsMd = readFileSync('as-cards-phone.md', 'utf8');
 
+const gearData = await loadGearData();
+
 const briefHtml = wrapH2InDetails(addHeadingIds(marked.parse(briefMd)));
-const cardsHtml = wrapH2InDetails(addTableRowIds(addHeadingIds(marked.parse(cardsMd))));
+const cardsHtml = wrapH2InDetails(
+  addTableRowIds(addHeadingIds(marked.parse(cardsMd))),
+  gearData
+);
 
 // TOC: phase pills derived from H2 headings whose text starts with a phase emoji.
 const phaseH2s = extractH2(cardsMd).filter(h => /^[🔥🥶]/.test(h.text));
@@ -285,6 +415,45 @@ tbody tr[data-as].highlighted td {
   background: #FFCC80;
 }
 
+/* Drop-bag contents synced from the Pacing Chart Gear Checklist tab.
+   Default-closed details inside each AS card with a drop bag.
+   Bordered + own background so it stays distinct whether the parent
+   card is white, gray, or peach (highlighted). */
+.gear-section {
+  margin: 8px 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.gear-summary {
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-soft);
+}
+.gear-list {
+  margin: 0;
+  padding: 4px 12px 8px 28px;
+  font-size: 14px;
+  list-style: "🎒  ";
+}
+.gear-list li { margin-bottom: 4px; line-height: 1.4; }
+.gear-qty {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg-soft);
+  background: var(--pill-bg);
+  padding: 1px 7px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+.gear-notes {
+  font-size: 12px;
+  color: var(--fg-soft);
+  font-style: italic;
+}
+
 .fab {
   position: fixed; bottom: 18px; right: 18px;
   background: var(--accent); color: #FFF;
@@ -350,8 +519,10 @@ const html = `<!DOCTYPE html>
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-as]');
     if (!el) return;
-    // Don't hijack taps on real anchor links inside a card/row.
+    // Don't hijack taps on real anchor links or on nested <summary>
+    // elements (e.g. the drop-bag collapsible inside a card).
     if (e.target.closest('a')) return;
+    if (e.target.closest('summary')) return;
     var id = el.dataset.as;
     var idx = state.indexOf(id);
     if (idx === -1) state.push(id); else state.splice(idx, 1);

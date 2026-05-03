@@ -172,6 +172,45 @@ tbody tr[data-as].highlighted td {
   background: #FFCC80;
 }
 
+/* Drop-bag contents synced from the Pacing Chart Gear Checklist tab.
+   Default-closed details inside each AS card with a drop bag.
+   Bordered + own background so it stays distinct whether the parent
+   card is white, gray, or peach (highlighted). */
+.gear-section {
+  margin: 8px 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.gear-summary {
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-soft);
+}
+.gear-list {
+  margin: 0;
+  padding: 4px 12px 8px 28px;
+  font-size: 14px;
+  list-style: "🎒  ";
+}
+.gear-list li { margin-bottom: 4px; line-height: 1.4; }
+.gear-qty {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--fg-soft);
+  background: var(--pill-bg);
+  padding: 1px 7px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+.gear-notes {
+  font-size: 12px;
+  color: var(--fg-soft);
+  font-style: italic;
+}
+
 .fab {
   position: fixed; bottom: 18px; right: 18px;
   background: var(--accent); color: #FFF;
@@ -188,7 +227,7 @@ tbody tr[data-as].highlighted td {
 <a id="top"></a>
 <header class="topbar">
   <h1>🏃 Cocodona 250</h1>
-  <small>May 02, 2026, 09:24 PM</small>
+  <small>May 02, 2026, 09:33 PM</small>
 </header>
 <nav class="toc">
   <a href="#race-at-a-glance">🗺️ Glance</a>
@@ -592,8 +631,10 @@ tbody tr[data-as].highlighted td {
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-as]');
     if (!el) return;
-    // Don't hijack taps on real anchor links inside a card/row.
+    // Don't hijack taps on real anchor links or on nested <summary>
+    // elements (e.g. the drop-bag collapsible inside a card).
     if (e.target.closest('a')) return;
+    if (e.target.closest('summary')) return;
     var id = el.dataset.as;
     var idx = state.indexOf(id);
     if (idx === -1) state.push(id); else state.splice(idx, 1);
