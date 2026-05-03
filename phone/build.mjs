@@ -29,6 +29,25 @@ function addHeadingIds(html) {
   });
 }
 
+// Wrap each H3 (AS card) + the content beneath it in a <div class="card …">
+// alternating odd/even, so the page can paint a zebra-stripe background.
+// Counter resets per H2 section (passed in as `body`) so each phase starts
+// fresh from "odd". Used to make adjacent aid stations visually separable
+// under fatigue.
+function wrapCardsInBody(body) {
+  const parts = body.split(/(?=<h3\b)/);
+  if (parts.length === 0) return body;
+  const firstIsH3 = parts[0].startsWith('<h3');
+  if (!firstIsH3 && parts.length === 1) return body;  // no H3s in this section
+  const head = firstIsH3 ? '' : parts[0];
+  const cardParts = firstIsH3 ? parts : parts.slice(1);
+  const cards = cardParts.map((card, i) => {
+    const cls = i % 2 === 0 ? 'card card-odd' : 'card card-even';
+    return `<div class="${cls}">${card}</div>`;
+  });
+  return head + cards.join('');
+}
+
 // Wrap each H2 section in <details> so it's collapsible. The id moves from the
 // h2 to the <details> so anchor links auto-open the section.
 //
@@ -48,7 +67,7 @@ function wrapH2InDetails(html) {
     const openAttr = isLegend ? '' : ' open';
     return `<details${openAttr} class="h2-section" id="${id}">` +
       `<summary class="h2-summary"><h2>${h2text}</h2></summary>` +
-      `<div class="h2-body">${body}</div>` +
+      `<div class="h2-body">${wrapCardsInBody(body)}</div>` +
       `</details>`;
   });
   return head + sections.join('');
@@ -219,6 +238,20 @@ th, td {
 }
 th { background: var(--pill-bg); font-weight: 700; }
 tr td:first-child, tr th:first-child { font-weight: 600; }
+/* Zebra-stripe AS rows in the at-a-glance table for fatigue legibility. */
+tbody tr:nth-child(even) td { background: var(--pill-bg); }
+
+/* Zebra-stripe individual AS cards within each phase. Counter resets per
+   phase so every phase starts with "odd" (white) regardless of card count. */
+.card {
+  margin: 0 -8px;
+  padding: 4px 8px 8px;
+  border-radius: 6px;
+}
+.card.card-even {
+  background: var(--pill-bg);
+}
+.card h3 { margin-top: 8px; }
 
 .fab {
   position: fixed; bottom: 18px; right: 18px;
