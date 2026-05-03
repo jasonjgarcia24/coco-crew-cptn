@@ -160,6 +160,17 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 }
 .card h3 { margin-top: 8px; }
 
+/* Click-to-highlight: tap any AS card or at-a-glance row to mark it.
+   State persists via localStorage so it survives reload + airplane mode.
+   Tapping the card highlights its matching table row too (and vice versa).
+   Color is Material Orange 300 — moderate saturation, dark text stays
+   readable, and it stands out clearly under desert sun. */
+[data-as] { cursor: pointer; }
+.card[data-as].highlighted,
+tbody tr[data-as].highlighted td {
+  background: #FFB74D;
+}
+
 .fab {
   position: fixed; bottom: 18px; right: 18px;
   background: var(--accent); color: #FFF;
@@ -176,7 +187,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <a id="top"></a>
 <header class="topbar">
   <h1>🏃 Cocodona 250</h1>
-  <small>May 02, 2026, 07:31 PM</small>
+  <small>May 02, 2026, 07:36 PM</small>
 </header>
 <nav class="toc">
   <a href="#race-at-a-glance">🗺️ Glance</a>
@@ -202,139 +213,139 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <th>Conditions</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody><tr data-as="m0">
 <td>00 Start (M0)</td>
 <td>🎒</td>
 <td>7.4</td>
 <td>—</td>
 </tr>
-<tr>
+<tr data-as="m74">
 <td>01 Cottonwood (M7.4)</td>
 <td>⚠️</td>
 <td>25.1</td>
 <td>🔥 🪨 ⬆️ ⬇️</td>
 </tr>
-<tr>
+<tr data-as="m325">
 <td>02 Lane Mtn (M32.5)</td>
 <td>⚕️</td>
 <td>4.1</td>
 <td>⬇️</td>
 </tr>
-<tr>
+<tr data-as="m366">
 <td>03 Crown King (M36.6)</td>
 <td>🎒⚕️⚠️</td>
 <td>14.4</td>
 <td>🥶 ⬆️ ⬇️</td>
 </tr>
-<tr>
+<tr data-as="m51">
 <td>04 Arrastra (M51)</td>
 <td>—</td>
 <td>9.8</td>
 <td>🥶 ⬆️ 🪨 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m608">
 <td>05 Kamp Kipa (M60.8)</td>
 <td>🎒💤</td>
 <td>6.6</td>
 <td>⬇️</td>
 </tr>
-<tr>
+<tr data-as="m674">
 <td>06 Camp Wamatochick (M67.4)</td>
 <td>🎒💤🚿</td>
 <td>8.2</td>
 <td>⬇️</td>
 </tr>
-<tr>
+<tr data-as="m756">
 <td>07 Whiskey Row (M75.6)</td>
 <td>🎒💤⚕️</td>
 <td>7.2</td>
 <td>—</td>
 </tr>
-<tr>
+<tr data-as="m828">
 <td>08 Watson Lake (M82.8)</td>
 <td>—</td>
 <td>13.7</td>
 <td>🪨</td>
 </tr>
-<tr>
+<tr data-as="m965">
 <td>09 Fain Ranch (M96.5)</td>
 <td>🎒⚠️</td>
 <td>10.7</td>
 <td>🔥 🏔️ ⬆️</td>
 </tr>
-<tr>
+<tr data-as="m1072">
 <td>10 Mingus (M107.2)</td>
 <td>🎒💤🚿⚕️</td>
 <td>17.0</td>
 <td>🔥 🪨 ⬇️</td>
 </tr>
-<tr>
+<tr data-as="m1242">
 <td>11 Jerome (M124.2)</td>
 <td>—</td>
 <td>8.7</td>
 <td>🔥 ⬇️</td>
 </tr>
-<tr>
+<tr data-as="m1329">
 <td>12 Dead Horse (M132.9)</td>
 <td>🎒💤🚿⚕️</td>
 <td>14.0</td>
 <td>🪨</td>
 </tr>
-<tr>
+<tr data-as="m1469">
 <td>13 Deer Pass (M146.9)</td>
 <td>🎒</td>
 <td>12.2</td>
 <td>🔥</td>
 </tr>
-<tr>
+<tr data-as="m1591">
 <td>14 Sedona Posse (M159.1)</td>
 <td>🎒💤⚕️⚠️</td>
 <td>17.0</td>
 <td>🔥 🪨 🏔️ ⬆️</td>
 </tr>
-<tr>
+<tr data-as="m1761">
 <td>15 Schnebly (M176.1)</td>
 <td>🎒⚕️</td>
 <td>13.9</td>
 <td>🥶 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m1900">
 <td>16 Munds Park (M190.0)</td>
 <td>🎒💤⚕️⚠️</td>
 <td>12.7</td>
 <td>🥶 🪨 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m2027">
 <td>17 Kelly Canyon (M202.7)</td>
 <td>—</td>
 <td>8.3</td>
 <td>🥶 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m2110">
 <td>18 Fort Tuthill (M211.0)</td>
 <td>🎒💤⚕️⚠️</td>
 <td>16.1</td>
 <td>🥶 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m2271">
 <td>19 Walnut Canyon (M227.1)</td>
 <td>🎒⚕️</td>
 <td>7.0</td>
 <td>🥶 🏔️</td>
 </tr>
-<tr>
+<tr data-as="m2341">
 <td>20 Wildcat Hill (M234.1)</td>
 <td>🎒⚠️</td>
 <td>15.3</td>
 <td>🥶 🪨 🏔️ ⬆️ ⬇️</td>
 </tr>
-<tr>
+<tr data-as="m2494">
 <td>21 Trinity Heights (M249.4)</td>
 <td>—</td>
 <td>3.9</td>
 <td>—</td>
 </tr>
-<tr>
+<tr data-as="m2533">
 <td>22 🏁 Finish (M253.3)</td>
 <td>🎒⚕️</td>
 <td>—</td>
@@ -342,14 +353,14 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 </tr>
 </tbody></table>
 </div></details><details open class="h2-section" id="hot-opening-start-to-crown-king"><summary class="h2-summary"><h2>🔥🪨 Hot opening — Start to Crown King</h2></summary><div class="h2-body">
-<div class="card card-odd"><h3 id="m0-start-deep-canyon-ranch">M0 · Start: Deep Canyon Ranch · 🎒</h3>
+<div class="card card-odd" data-as="m0"><h3 id="m0-start-deep-canyon-ranch">M0 · Start: Deep Canyon Ranch · 🎒</h3>
 <ul>
 <li>🟢🟡 5:00 AM Mon - 5:00 AM Mon (mass start)</li>
 <li>⚠️ <strong>4 L water capacity check</strong></li>
 <li>→ Cottonwood +7.4 mi · — (rolling, +1,423/-1,339)</li>
 <li>🎒 next: +36.6 mi → Crown King</li>
 </ul>
-</div><div class="card card-even"><h3 id="m74-cottonwood-creek">M7.4 · Cottonwood Creek</h3>
+</div><div class="card card-even" data-as="m74"><h3 id="m74-cottonwood-creek">M7.4 · Cottonwood Creek</h3>
 <ul>
 <li>🟢🟡 6:19 AM Mon - 6:38 AM Mon</li>
 <li>⚠️ <strong>Leave w/ 4 L MIN water</strong></li>
@@ -358,14 +369,14 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>1 L water at M10.4 + M24.6</li>
 <li>🎒 next: +29.2 mi → Crown King</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m325-lane-mtn">M32.5 · Lane Mtn · ⚕️</h3>
+</div><div class="card card-odd" data-as="m325"><h3 id="m325-lane-mtn">M32.5 · Lane Mtn · ⚕️</h3>
 <ul>
 <li>🟢🟡 1:20 PM Mon - 3:21 PM Mon</li>
 <li>← Cottonwood +25.1 mi</li>
 <li>→ Crown King +4.1 mi · +338&#39;/-1,304&#39;</li>
 <li>🎒 next: +4.1 mi → Crown King</li>
 </ul>
-</div><div class="card card-even"><h3 id="m366-crown-king">M36.6 · Crown King · 🎒⚕️</h3>
+</div><div class="card card-even" data-as="m366"><h3 id="m366-crown-king">M36.6 · Crown King · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 2:20 PM Mon - 4:38 PM Mon</li>
 <li><strong>Dropbag rolls to Fort Tuthill M211</strong></li>
@@ -375,7 +386,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>🎒 next: +24.2 mi → Kamp Kipa</li>
 </ul>
 </div></div></details><details open class="h2-section" id="bradshaws-arrastra-to-fain-ranch"><summary class="h2-summary"><h2>🥶 Bradshaws — Arrastra to Fain Ranch</h2></summary><div class="h2-body">
-<div class="card card-odd"><h3 id="m51-arrastra-creek">M51 · Arrastra Creek</h3>
+<div class="card card-odd" data-as="m51"><h3 id="m51-arrastra-creek">M51 · Arrastra Creek</h3>
 <ul>
 <li>🟢🟡 4:51 PM Mon - 7:50 PM Mon</li>
 <li>Pass-through, refuel</li>
@@ -383,7 +394,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Kamp Kipa +9.8 mi · 🥶 +3,012&#39;/-841&#39; 🪨 🏔️</li>
 <li>🎒 next: +9.8 mi → Kamp Kipa</li>
 </ul>
-</div><div class="card card-even"><h3 id="m608-kamp-kipa">M60.8 · Kamp Kipa · 🎒💤</h3>
+</div><div class="card card-even" data-as="m608"><h3 id="m608-kamp-kipa">M60.8 · Kamp Kipa · 🎒💤</h3>
 <ul>
 <li>🟢🟡 6:39 PM Mon - 10:06 PM Mon</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -391,7 +402,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Camp Wamatochick +6.6 mi · +481&#39;/-1,503&#39;</li>
 <li>🎒 next: +6.6 mi → Camp Wamatochick</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m674-camp-wamatochick">M67.4 · Camp Wamatochick · 🎒💤🚿</h3>
+</div><div class="card card-odd" data-as="m674"><h3 id="m674-camp-wamatochick">M67.4 · Camp Wamatochick · 🎒💤🚿</h3>
 <ul>
 <li>🟢🟡 7:57 PM Mon - 11:47 PM Mon</li>
 <li><strong>30 min sleep</strong></li>
@@ -399,7 +410,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Whiskey Row +8.2 mi · +438&#39;/-1,491&#39;</li>
 <li>🎒 next: +8.2 mi → Whiskey Row</li>
 </ul>
-</div><div class="card card-even"><h3 id="m756-whiskey-row">M75.6 · Whiskey Row · 🎒💤⚕️</h3>
+</div><div class="card card-even" data-as="m756"><h3 id="m756-whiskey-row">M75.6 · Whiskey Row · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 10:28 PM Mon - 2:46 AM Tue</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -407,7 +418,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Watson Lake +7.2 mi</li>
 <li>🎒 next: +20.9 mi → Fain Ranch</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m828-watson-lake">M82.8 · Watson Lake</h3>
+</div><div class="card card-odd" data-as="m828"><h3 id="m828-watson-lake">M82.8 · Watson Lake</h3>
 <ul>
 <li>🟢🟡 11:47 PM Mon - 4:29 AM Tue</li>
 <li>Pass-through</li>
@@ -415,7 +426,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Fain Ranch +13.7 mi · 🪨 (Granite Dells)</li>
 <li>🎒 next: +13.7 mi → Fain Ranch</li>
 </ul>
-</div><div class="card card-even"><h3 id="m965-fain-ranch">M96.5 · Fain Ranch · 🎒</h3>
+</div><div class="card card-even" data-as="m965"><h3 id="m965-fain-ranch">M96.5 · Fain Ranch · 🎒</h3>
 <ul>
 <li>🟢🟡 2:32 AM Tue - 7:55 AM Tue</li>
 <li>⚠️ <strong>Full kit check</strong> — IF leaving after 10 AM</li>
@@ -424,7 +435,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>🎒 next: +10.7 mi → Mingus</li>
 </ul>
 </div></div></details><details open class="h2-section" id="verde-valley-sedona-mingus-to-sedona-posse"><summary class="h2-summary"><h2>🔥 Verde Valley &amp; Sedona — Mingus to Sedona Posse</h2></summary><div class="h2-body">
-<div class="card card-odd"><h3 id="m1072-mingus-mountain-780039">M107.2 · Mingus Mountain (~7,800&#39;) · 🎒💤🚿⚕️</h3>
+<div class="card card-odd" data-as="m1072"><h3 id="m1072-mingus-mountain-780039">M107.2 · Mingus Mountain (~7,800&#39;) · 🎒💤🚿⚕️</h3>
 <ul>
 <li>🟢🟡 5:27 AM Tue - 11:36 AM Tue</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -432,7 +443,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Jerome +17.0 mi · 🔥 🪨 +1,750&#39;/-4,428&#39;</li>
 <li>🎒 next: +25.7 mi → Dead Horse</li>
 </ul>
-</div><div class="card card-even"><h3 id="m1242-jerome">M124.2 · Jerome</h3>
+</div><div class="card card-even" data-as="m1242"><h3 id="m1242-jerome">M124.2 · Jerome</h3>
 <ul>
 <li>🟢🟡 8:59 AM Tue - 3:56 PM Tue</li>
 <li>Pass-through</li>
@@ -440,7 +451,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Dead Horse +8.7 mi · 🔥 +356&#39;/-1,976&#39; (Verde River)</li>
 <li>🎒 next: +8.7 mi → Dead Horse</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m1329-dead-horse">M132.9 · Dead Horse · 🎒💤🚿⚕️</h3>
+</div><div class="card card-odd" data-as="m1329"><h3 id="m1329-dead-horse">M132.9 · Dead Horse · 🎒💤🚿⚕️</h3>
 <ul>
 <li>🟢🟡 10:33 AM Tue - 5:56 PM Tue</li>
 <li>Outdoor sleep (NOT used in plan)</li>
@@ -448,14 +459,14 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Deer Pass +14.0 mi · 🪨</li>
 <li>🎒 next: +14.0 mi → Deer Pass</li>
 </ul>
-</div><div class="card card-even"><h3 id="m1469-deer-pass">M146.9 · Deer Pass · 🎒</h3>
+</div><div class="card card-even" data-as="m1469"><h3 id="m1469-deer-pass">M146.9 · Deer Pass · 🎒</h3>
 <ul>
 <li>🟢🟡 1:19 PM Tue - 9:26 PM Tue</li>
 <li>← Dead Horse +14.0 mi</li>
 <li>→ Sedona Posse +12.2 mi · 🔥 (water station M153.6)</li>
 <li>🎒 next: +12.2 mi → Sedona Posse</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m1591-sedona-posse">M159.1 · Sedona Posse · 🎒💤⚕️</h3>
+</div><div class="card card-odd" data-as="m1591"><h3 id="m1591-sedona-posse">M159.1 · Sedona Posse · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 3:45 PM Tue - 12:32 AM Wed</li>
 <li><strong>60 min sleep</strong></li>
@@ -465,7 +476,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>🎒 next: +17.0 mi → Schnebly Hill</li>
 </ul>
 </div></div></details><details open class="h2-section" id="cold-mountains-finish-schnebly-to-heritage-sq"><summary class="h2-summary"><h2>🥶🏔️ Cold mountains &amp; finish — Schnebly to Heritage Sq</h2></summary><div class="h2-body">
-<div class="card card-odd"><h3 id="m1761-schnebly-hill">M176.1 · Schnebly Hill · 🎒⚕️</h3>
+<div class="card card-odd" data-as="m1761"><h3 id="m1761-schnebly-hill">M176.1 · Schnebly Hill · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 9:06 PM Tue - 7:07 AM Wed</li>
 <li>Drop bag + medic (no sleep here)</li>
@@ -473,7 +484,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Munds Park +13.9 mi · 🥶 🏔️ (Coconino Plateau, upper-30s°F)</li>
 <li>🎒 next: +13.9 mi → Munds Park</li>
 </ul>
-</div><div class="card card-even"><h3 id="m1900-munds-park">M190.0 · Munds Park · 🎒💤⚕️</h3>
+</div><div class="card card-even" data-as="m1900"><h3 id="m1900-munds-park">M190.0 · Munds Park · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 11:44 PM Tue - 10:27 AM Wed</li>
 <li>Outdoor sleep (NOT used in plan)</li>
@@ -482,7 +493,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Kelly Canyon +12.7 mi · 🥶 🪨 🏔️</li>
 <li>🎒 next: +21.0 mi → Fort Tuthill</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m2027-kelly-canyon">M202.7 · Kelly Canyon</h3>
+</div><div class="card card-odd" data-as="m2027"><h3 id="m2027-kelly-canyon">M202.7 · Kelly Canyon</h3>
 <ul>
 <li>🟢🟡 2:01 AM Wed - 1:22 PM Wed</li>
 <li>Pass-through</li>
@@ -490,7 +501,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Fort Tuthill +8.3 mi · 🥶 🏔️</li>
 <li>🎒 next: +8.3 mi → Fort Tuthill</li>
 </ul>
-</div><div class="card card-even"><h3 id="m2110-fort-tuthill">M211.0 · Fort Tuthill · 🎒💤⚕️</h3>
+</div><div class="card card-even" data-as="m2110"><h3 id="m2110-fort-tuthill">M211.0 · Fort Tuthill · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 3:26 AM Wed - 3:10 PM Wed</li>
 <li><strong>30 min sleep</strong></li>
@@ -500,14 +511,14 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Walnut Canyon +16.1 mi · 🥶 🏔️</li>
 <li>🎒 next: +16.1 mi → Walnut Canyon</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m2271-walnut-canyon">M227.1 · Walnut Canyon · 🎒⚕️</h3>
+</div><div class="card card-odd" data-as="m2271"><h3 id="m2271-walnut-canyon">M227.1 · Walnut Canyon · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 7:02 AM Wed - 7:39 PM Wed</li>
 <li>← Fort Tuthill +16.1 mi</li>
 <li>→ Wildcat +7.0 mi · 🥶 🏔️</li>
 <li>🎒 next: +7.0 mi → Wildcat Hill</li>
 </ul>
-</div><div class="card card-even"><h3 id="m2341-wildcat-hill">M234.1 · Wildcat Hill · 🎒</h3>
+</div><div class="card card-even" data-as="m2341"><h3 id="m2341-wildcat-hill">M234.1 · Wildcat Hill · 🎒</h3>
 <ul>
 <li>🟢🟡 8:26 AM Wed - 9:27 PM Wed</li>
 <li>⚠️ <strong>Last full kit check</strong></li>
@@ -515,7 +526,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ Trinity +15.3 mi · 🥶 🪨 🏔️ +3,386&#39;/-3,055&#39; (altitude 9,000&#39;)</li>
 <li>🎒 next: +19.2 mi → Finish</li>
 </ul>
-</div><div class="card card-odd"><h3 id="m2494-trinity-heights">M249.4 · Trinity Heights</h3>
+</div><div class="card card-odd" data-as="m2494"><h3 id="m2494-trinity-heights">M249.4 · Trinity Heights</h3>
 <ul>
 <li>🟢🟡 11:18 AM Wed - 1:06 AM Thu</li>
 <li>Last AS, push 3.9 mi</li>
@@ -523,7 +534,7 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 <li>→ 🏁 FINISH +3.9 mi · — (urban gentle)</li>
 <li>🎒 next: +3.9 mi → Finish</li>
 </ul>
-</div><div class="card card-even"><h3 id="m2533-heritage-square-finish">M253.3 · 🏁 Heritage Square FINISH · 🎒⚕️</h3>
+</div><div class="card card-even" data-as="m2533"><h3 id="m2533-heritage-square-finish">M253.3 · 🏁 Heritage Square FINISH · 🎒⚕️</h3>
 <ul>
 <li>← Trinity +3.9 mi</li>
 <li>🟢🟡 12:00 PM Wed - 2:00 AM Thu</li>
@@ -559,5 +570,36 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
   </details>
 </main>
 <a class="fab" href="#top" aria-label="Back to top">⬆</a>
+<script>
+// Tap-to-highlight aid stations. State stored in localStorage as a JSON
+// array of mile-slugs (e.g. ["m74","m366"]) under STORE_KEY. Card and
+// row share the same data-as so they highlight in lockstep.
+(function () {
+  var STORE_KEY = 'cocodona-as-highlights';
+  var state;
+  try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }
+  catch (e) { state = []; }
+  if (!Array.isArray(state)) state = [];
+
+  function paint() {
+    document.querySelectorAll('[data-as]').forEach(function (el) {
+      el.classList.toggle('highlighted', state.indexOf(el.dataset.as) !== -1);
+    });
+  }
+  paint();
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-as]');
+    if (!el) return;
+    // Don't hijack taps on real anchor links inside a card/row.
+    if (e.target.closest('a')) return;
+    var id = el.dataset.as;
+    var idx = state.indexOf(id);
+    if (idx === -1) state.push(id); else state.splice(idx, 1);
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+    paint();
+  });
+})();
+</script>
 </body>
 </html>

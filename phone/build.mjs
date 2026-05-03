@@ -29,11 +29,19 @@ function addHeadingIds(html) {
   });
 }
 
+// Mile-marker → stable AS id used to sync a card with its at-a-glance row
+// for the click-to-highlight feature. "M7.4" → "m74", "M0" → "m0", etc.
+function extractMileSlug(text) {
+  const m = text.match(/M(\d+(?:\.\d+)?)/);
+  return m ? 'm' + m[1].replace('.', '') : null;
+}
+
 // Wrap each H3 (AS card) + the content beneath it in a <div class="card …">
 // alternating odd/even, so the page can paint a zebra-stripe background.
 // Counter resets per H2 section (passed in as `body`) so each phase starts
 // fresh from "odd". Used to make adjacent aid stations visually separable
-// under fatigue.
+// under fatigue. Also stamps `data-as="<mile-slug>"` so the card is
+// clickable and syncs with its matching at-a-glance row.
 function wrapCardsInBody(body) {
   const parts = body.split(/(?=<h3\b)/);
   if (parts.length === 0) return body;
@@ -43,9 +51,21 @@ function wrapCardsInBody(body) {
   const cardParts = firstIsH3 ? parts : parts.slice(1);
   const cards = cardParts.map((card, i) => {
     const cls = i % 2 === 0 ? 'card card-odd' : 'card card-even';
-    return `<div class="${cls}">${card}</div>`;
+    const h3match = card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/);
+    const slug = h3match ? extractMileSlug(h3match[1]) : null;
+    const dataAttr = slug ? ` data-as="${slug}"` : '';
+    return `<div class="${cls}"${dataAttr}>${card}</div>`;
   });
   return head + cards.join('');
+}
+
+// Stamp `data-as` on each at-a-glance table row by extracting the mile
+// marker from its first cell. Header rows use <th> so they're skipped.
+function addTableRowIds(html) {
+  return html.replace(/<tr>(\s*<td>([^<]*)<\/td>[\s\S]*?)<\/tr>/g, (full, inner, firstTd) => {
+    const slug = extractMileSlug(firstTd);
+    return slug ? `<tr data-as="${slug}">${inner}</tr>` : full;
+  });
 }
 
 // Wrap each H2 section in <details> so it's collapsible. The id moves from the
@@ -84,7 +104,7 @@ const briefMd = readFileSync('race-brief-phone.md', 'utf8');
 const cardsMd = readFileSync('as-cards-phone.md', 'utf8');
 
 const briefHtml = wrapH2InDetails(addHeadingIds(marked.parse(briefMd)));
-const cardsHtml = wrapH2InDetails(addHeadingIds(marked.parse(cardsMd)));
+const cardsHtml = wrapH2InDetails(addTableRowIds(addHeadingIds(marked.parse(cardsMd))));
 
 // TOC: phase pills derived from H2 headings whose text starts with a phase emoji.
 const phaseH2s = extractH2(cardsMd).filter(h => /^[🔥🥶]/.test(h.text));
@@ -253,6 +273,17 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 }
 .card h3 { margin-top: 8px; }
 
+/* Click-to-highlight: tap any AS card or at-a-glance row to mark it.
+   State persists via localStorage so it survives reload + airplane mode.
+   Tapping the card highlights its matching table row too (and vice versa).
+   Color is Material Orange 300 — moderate saturation, dark text stays
+   readable, and it stands out clearly under desert sun. */
+[data-as] { cursor: pointer; }
+.card[data-as].highlighted,
+tbody tr[data-as].highlighted td {
+  background: #FFB74D;
+}
+
 .fab {
   position: fixed; bottom: 18px; right: 18px;
   background: var(--accent); color: #FFF;
@@ -297,6 +328,37 @@ const html = `<!DOCTYPE html>
   </details>
 </main>
 <a class="fab" href="#top" aria-label="Back to top">⬆</a>
+<script>
+// Tap-to-highlight aid stations. State stored in localStorage as a JSON
+// array of mile-slugs (e.g. ["m74","m366"]) under STORE_KEY. Card and
+// row share the same data-as so they highlight in lockstep.
+(function () {
+  var STORE_KEY = 'cocodona-as-highlights';
+  var state;
+  try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }
+  catch (e) { state = []; }
+  if (!Array.isArray(state)) state = [];
+
+  function paint() {
+    document.querySelectorAll('[data-as]').forEach(function (el) {
+      el.classList.toggle('highlighted', state.indexOf(el.dataset.as) !== -1);
+    });
+  }
+  paint();
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-as]');
+    if (!el) return;
+    // Don't hijack taps on real anchor links inside a card/row.
+    if (e.target.closest('a')) return;
+    var id = el.dataset.as;
+    var idx = state.indexOf(id);
+    if (idx === -1) state.push(id); else state.splice(idx, 1);
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+    paint();
+  });
+})();
+</script>
 </body>
 </html>
 `;
