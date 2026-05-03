@@ -233,12 +233,12 @@ Soft flask 650 mL w/ lock valve,Spare,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,Fluid
 Soft flask 650 mL w/ lock valve,Spare,1,TRUE,- none -,TRUE,Deer Pass M146.9,Fluids,5
 Soft flask 650 mL w/ lock valve,Spare,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),Fluids,5
 Soft flask 150 mL w/ twist valve,Spare,2,TRUE,- none -,- none -,(none),,2
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Fain Ranch M96.5,,36
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Mingus Mountain M107.2,,36
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Schnebly Hill M176.1,,36
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Kamp Kipa M60.8,,36
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Mingus Mountain M107.2,,36
-Spare lock valve,Spare,6,TRUE,- none -,TRUE,Deer Pass M146.9,,36
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Fain Ranch M96.5,,6
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,6
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Schnebly Hill M176.1,,6
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,,6
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,6
+Spare lock valve,Spare,1,TRUE,- none -,TRUE,Deer Pass M146.9,,6
 Soft flask 1 L w/ blottle,Spare,1,TRUE,- none -,TRUE,Dead Horse M132.9,Fluids,2
 Lube,Spare,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Larger one,4
 Lube,Spare,1,TRUE,- none -,TRUE,Dead Horse M132.9,Small one,4
