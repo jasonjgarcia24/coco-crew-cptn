@@ -1,0 +1,219 @@
+Item,Category,Qty,Initial Pack (→AZ),Race Day Carry,Drop Bag,Drop Bag AS,Notes,Item Total
+Cell Phone,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),On person — entire course,1
+Watch w/ course loaded,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),Smartphone in airplane mode counts,1
+Headlamp,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),Lightweight headlamp,3
+Headlamp,Required,1,TRUE,FALSE,FALSE,Kamp Kipa M60.8,Petzl - Plus extra batteries / charger,3
+Headlamp spare batteries,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),2x extras in vest,3
+Collapsible cup,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),For hot drinks at AS — will just use soft flask for this,1
+Space blanket,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),Vest pocket,1
+Whistle,Required,1,TRUE,TRUE,- none -,Start (direct-to-finish),Vest whistle,1
+Bib + safety pins/belt,Required,1,- none -,TRUE,- none -,Start (direct-to-finish),Pickup race-eve at DCR,1
+Gloves,Cold Weather,1,TRUE,- none -,TRUE,Crown King M36.6,Patagonia - On person from CK forward,2
+Beanie,Cold Weather,1,TRUE,- none -,TRUE,Crown King M36.6,On person from CK forward,1
+Buffs,Cold Weather,1,TRUE,TRUE,- none -,Start (direct-to-finish),On person from CK forward,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Crown King M36.6,,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Fain Ranch M96.5,,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Dead Horse M132.9,,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,7
+Buffs,Cold Weather,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,7
+Long sleeve top,Cold Weather,1,TRUE,- none -,TRUE,Crown King M36.6,On person from CK forward,1
+Insulatory upper layer (puffy),Cold Weather,1,TRUE,- none -,TRUE,Crown King M36.6,TNF hooded puffy,2
+Insulatory upper layer (puffy),Cold Weather,1,TRUE,- none -,TRUE,Sedona Posse M159.1,REI hoodless puffy,2
+Waterproof jacket w/ hood,Cold Weather,1,TRUE,TRUE,- none -,Start (direct-to-finish),Required only if rain/snow forecast,1
+Race vest,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),"Zygos 6.0 - 7-flask vest, 4.92 L target cap",3
+Soft flask 800 mL w/ ext valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Front R - Personal mix flask,2
+Soft flask 800 mL w/ ext valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Front L - Water — missing elbow adapter for bite-valve,2
+Soft flask 360 mL w/ lock valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Side R - Spare water,2
+Soft flask 360 mL w/ lock valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Side L - Spare water,2
+Soft flask 1 L w/ blottle,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),"Back C - Coconut water leg 1, then water",2
+Soft flask 650 mL w/ lock valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Back R - Personal mix flask,4
+Soft flask 650 mL w/ lock valve,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),Back L - Water,4
+Running poles,Vest,1,TRUE,TRUE,- none -,Start (direct-to-finish),1xPair extra gloves,1
+Neversecond C30 gels (no caf),Fueling,6,TRUE,TRUE,- none -,Start (direct-to-finish),,33
+Neversecond C30 gels (no caf),Fueling,4,TRUE,- none -,TRUE,Crown King M36.6,,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,,33
+Neversecond C30 gels (no caf),,4,TRUE,- none -,TRUE,Whiskey Row M75.6,,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Fain Ranch M96.5,,33
+Neversecond C30 gels (no caf),Fueling,2,TRUE,- none -,TRUE,Mingus Mountain M107.2,,33
+Neversecond C30 gels (no caf),Fueling,3,TRUE,- none -,TRUE,Dead Horse M132.9,,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Deer Pass M146.9,,33
+Neversecond C30 gels (no caf),Fueling,2,TRUE,- none -,TRUE,Sedona Posse M159.1,,33
+Neversecond C30 gels (no caf),Fueling,0,TRUE,- none -,TRUE,Schnebly Hill M176.1,,33
+Neversecond C30 gels (no caf),Fueling,3,TRUE,- none -,TRUE,Munds Park M190.0,,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,33
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,33
+Neversecond C30 gels (no caf),Fueling,2,TRUE,- none -,TRUE,Walnut Canyon M227.1,,33
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Fain Ranch M96.5,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Deer Pass M146.9,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Munds Park M190.0,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,8
+Neversecond C30 gels (caf),Fueling,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,Caffeine post-CK only — 2 on hand,8
+LiquidIV packets,Fueling,6,TRUE,FALSE,FALSE,Start (direct-to-finish),2 mixed in flasks + 4 in pocket,31
+LiquidIV packets,Fueling,3,TRUE,- none -,TRUE,Crown King M36.6,1 normal / 2 w/ 60g carbs,31
+LiquidIV packets,Fueling,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,1 normal,31
+Neversecond C30 gels (no caf),Fueling,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,1 normal,33
+LiquidIV packets,Fueling,3,TRUE,- none -,TRUE,Whiskey Row M75.6,1 normal / 2 w/ 60g carbs,31
+LiquidIV packets,Fueling,2,TRUE,- none -,TRUE,Fain Ranch M96.5,1 normal / 1 w/ 60g carbs,31
+LiquidIV packets,Fueling,4,TRUE,- none -,TRUE,Mingus Mountain M107.2,2 normal / 2 w/ 60g carbs,31
+LiquidIV packets,Fueling,2,TRUE,- none -,TRUE,Dead Horse M132.9,,31
+LiquidIV packets,Fueling,2,TRUE,- none -,TRUE,Deer Pass M146.9,,31
+LiquidIV packets,Fueling,3,TRUE,- none -,TRUE,Sedona Posse M159.1,,31
+LiquidIV packets,Fueling,0,TRUE,- none -,TRUE,Schnebly Hill M176.1,,31
+LiquidIV packets,Fueling,3,TRUE,- none -,TRUE,Munds Park M190.0,,31
+LiquidIV packets,Fueling,2,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,31
+Fruit gummies,Fueling,6,TRUE,TRUE,- none -,Start (direct-to-finish),,39
+Fruit gummies,Fueling,3,TRUE,- none -,TRUE,Crown King M36.6,,39
+Fruit gummies,Fueling,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,,39
+Fruit gummies,Fueling,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,,39
+Fruit gummies,Fueling,4,TRUE,- none -,TRUE,Whiskey Row M75.6,,39
+Fruit gummies,Fueling,2,TRUE,- none -,TRUE,Fain Ranch M96.5,,39
+Fruit gummies,Fueling,3,TRUE,- none -,TRUE,Mingus Mountain M107.2,,39
+Fruit gummies,Fueling,3,TRUE,- none -,TRUE,Dead Horse M132.9,,39
+Fruit gummies,Fueling,2,TRUE,- none -,TRUE,Deer Pass M146.9,,39
+Fruit gummies,Fueling,3,TRUE,- none -,TRUE,Sedona Posse M159.1,,39
+Fruit gummies,Fueling,0,TRUE,- none -,TRUE,Schnebly Hill M176.1,,39
+Fruit gummies,Fueling,4,TRUE,- none -,TRUE,Munds Park M190.0,,39
+Fruit gummies,Fueling,2,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,39
+Fruit gummies,Fueling,2,TRUE,- none -,TRUE,Walnut Canyon M227.1,,39
+Fruit gummies,Fueling,3,TRUE,- none -,TRUE,Walnut Canyon M227.1,,39
+Salt caps (SaltStick 215 mg),Fueling,10,- none -,FALSE,FALSE,,Vest pocket — pre-load Cottonwood,40
+Salt caps (SaltStick 215 mg),Fueling,30,- none -,FALSE,FALSE,,Bulk restock,40
+Personal mix powder (50g/serving),Fueling,6,- none -,FALSE,FALSE,,6 servings in CK + 6 each at later sleep stops,6
+Coconut water,Fueling,1,- none -,- none -,TRUE,Kamp Kipa M60.8,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Camp Wamatochick M67.4,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Whiskey Row M75.6,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Fain Ranch M96.5,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Dead Horse M132.9,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Deer Pass M146.9,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Sedona Posse M159.1,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Schnebly Hill M176.1,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Munds Park M190.0,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Walnut Canyon M227.1,,12
+Coconut water,Fueling,1,- none -,- none -,TRUE,Walnut Canyon M227.1,,12
+Electrlyte drink,Fueling,1,TRUE,- none -,TRUE,Crown King M36.6,,2
+Electrlyte drink,Fueling,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,2
+Personal meal replacement,Fueling,4,- none -,FALSE,FALSE,,One per sleep station,4
+Protien powder,Fueling,1,TRUE,- none -,- none -,(none),2 Nalgenes,1
+Maltodextrin,Fueling,1,TRUE,- none -,- none -,(none),3 Nalgenes,1
+Fructose,Fueling,1,TRUE,- none -,- none -,(none),1 Bag,1
+Sodium Citrate,Fueling,1,TRUE,- none -,- none -,(none),,1
+Caffeine pills (100 mg),Fueling,4,FALSE,FALSE,FALSE,,Sleep monsters fallback,4
+Idaho potatoes,Fueling,4,TRUE,FALSE,FALSE,,,4
+Shirt,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),White rabbit sun-hoody,5
+Shirt,Apparel,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Thanksgiving 5k shirt,5
+Shirt,Apparel,1,TRUE,- none -,TRUE,Fain Ranch M96.5,Grey rabbit sun-hoody,5
+Shirt,Apparel,1,TRUE,- none -,TRUE,Dead Horse M132.9,Tarignota shirt,5
+Shirt,Apparel,1,TRUE,- none -,TRUE,Sedona Posse M159.1,Vulture shirt,5
+Shirt,Apparel,0,TRUE,- none -,FALSE,,,5
+Sun hat,Apparel,1,TRUE,- none -,- none -,Start (direct-to-finish),Tarignota cap,3
+Sun hat,Apparel,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Cowgill cap,3
+Sun hat,Apparel,1,TRUE,- none -,TRUE,Schnebly Hill M176.1,Badger cap,3
+Ice bandana,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),Drop at Lane Mtn,2
+Ice bandana,Apparel,1,TRUE,- none -,TRUE,Fain Ranch M96.5,Fain Ranch to Schnebly is hot - can drop after Schnebly,2
+Sunglasses,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),Smith sunglasses,2
+Sunglasses,Apparel,1,TRUE,- none -,TRUE,Fain Ranch M96.5,Julbo sunglasses,2
+Sun sleeves,Apparel,1,TRUE,- none -,TRUE,Dead Horse M132.9,Rabbit white sleeves,2
+Sun sleeves,Apparel,1,TRUE,FALSE,FALSE,,,2
+Shorts,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),Tarignota shorts,7
+Shorts,Apparel,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Janji half tights - should be helpful for the night,7
+Shorts,Apparel,1,TRUE,- none -,TRUE,Fain Ranch M96.5,Janji light shorts,7
+Shorts,Apparel,1,TRUE,- none -,FALSE,Dead Horse M132.9,Rabbit light shorts,7
+Shorts,Apparel,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),Sayski shorts,7
+Shorts,Apparel,1,TRUE,- none -,FALSE,Munds Park M190.0,Janji light shorts,7
+Shorts,Apparel,1,TRUE,- none -,TRUE,Sedona Posse M159.1,Janji half tights - should be helpful for the night,7
+Socks,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),,6
+Socks,Apparel,1,TRUE,- none -,TRUE,Crown King M36.6,,6
+Socks,Apparel,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,"Keep previous socks, wash in shower, hang on vest to dry/reuse",6
+Socks,Apparel,1,TRUE,- none -,TRUE,Dead Horse M132.9,"Keep previous socks, wash in shower, hang on vest to dry/reuse",6
+Socks,Apparel,1,TRUE,- none -,TRUE,Munds Park M190.0,,6
+Socks,Apparel,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,6
+Shoes,Apparel,1,TRUE,TRUE,- none -,Start (direct-to-finish),Hoka Challenger #1 - Size 9,5
+Shoes,Apparel,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,Mount2Coast H1 - Size 9,5
+Shoes,Apparel,1,TRUE,- none -,TRUE,Dead Horse M132.9,Hoka Challenger #2 - Size 9,5
+Shoes,Apparel,1,TRUE,- none -,TRUE,Munds Park M190.0,Hoka Challenger #3 - Size 9.5,5
+Shoes,Apparel,1,TRUE,- none -,- none -,(none),Hoka Speedgoat - Size 9,5
+Gaiters,Apparel,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,Attached to M2C H1,3
+Gaiters,Apparel,1,TRUE,- none -,TRUE,Munds Park M190.0,Attached to Hoka Challenger #3,3
+Gaiters,Apparel,1,TRUE,- none -,- none -,Start (direct-to-finish),On starting shoes,3
+Earplugs,Sleep Kit,0,TRUE,FALSE,FALSE,,One per planned sleep stop,3
+Watch alarms set,Sleep Kit,2,- none -,FALSE,FALSE,Start (direct-to-finish),On wrist — second alarm independent of phone,2
+Sunscreen,Medical,1,- none -,TRUE,- none -,Start (direct-to-finish),Carry,6
+Lube,Medical,1,TRUE,TRUE,- none -,Start (direct-to-finish),,4
+Leukotape,Medical,1,TRUE,TRUE,- none -,Start (direct-to-finish),Wrap on poles,2
+Tums / GI rescue,Medical,10,TRUE,FALSE,FALSE,Start (direct-to-finish),,10
+Imodium,Medical,4,TRUE,FALSE,FALSE,Start (direct-to-finish),,4
+NSAID (Tylenol — NOT ibuprofen),Medical,8,TRUE,FALSE,FALSE,Start (direct-to-finish),Note: ibuprofen risks kidney issues,8
+Antihistamine,Medical,8,TRUE,TRUE,TRUE,Start (direct-to-finish),,8
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Crown King M36.6,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Fain Ranch M96.5,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Sedona Posse M159.1,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Schnebly Hill M176.1,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Munds Park M190.0,Wetwipe baths,7
+Wetwipes,Medical,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,Wetwipe baths,7
+Toothbrush,Medical,1,TRUE,- none -,TRUE,Kamp Kipa M60.8,,5
+Toothbrush,Medical,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,5
+Toothbrush,Medical,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,5
+Toothbrush,Medical,1,TRUE,- none -,TRUE,Munds Park M190.0,,5
+Toothbrush,Medical,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,5
+Mouthwash,Medical,1,- none -,- none -,TRUE,Kamp Kipa M60.8,,5
+Mouthwash,Medical,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,,5
+Mouthwash,Medical,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,5
+Mouthwash,Medical,1,TRUE,- none -,TRUE,Munds Park M190.0,,5
+Mouthwash,Medical,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,5
+Small towel,Medical,3,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Towels for shower stations,6
+Small towel,Medical,3,TRUE,- none -,TRUE,Dead Horse M132.9,Towels for shower stations,6
+Soap,Medical,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Soap for shower stations,2
+Soap,Medical,1,TRUE,- none -,TRUE,Dead Horse M132.9,Soap for shower stations,2
+Vapor inhaler,Medical,1,- none -,- none -,TRUE,Kamp Kipa M60.8,Use to keep awake - take with,2
+Vapor inhaler,Medical,1,- none -,- none -,TRUE,Munds Park M190.0,Use to keep awake - take with,2
+Saline nasal spray,Medical,1,- none -,- none -,TRUE,Kamp Kipa M60.8,Do not take with,2
+Saline nasal spray,Medical,1,- none -,- none -,TRUE,Walnut Canyon M227.1,,2
+Toilet paper,Medical,14,- none -,FALSE,FALSE,,Toilet paper stashes for bio-events,14
+Poop bags,Medical,14,- none -,FALSE,FALSE,,Poop bags for bio-events,14
+Eye drops,Medical,1,- none -,- none -,TRUE,Camp Wamatochick M67.4,,2
+Eye drops,Medical,1,- none -,- none -,TRUE,Schnebly Hill M176.1,,2
+Sunscreen,Medical,1,- none -,- none -,TRUE,Kamp Kipa M60.8,,6
+Sunscreen,Medical,1,- none -,- none -,TRUE,Fain Ranch M96.5,,6
+Sunscreen,Medical,1,- none -,- none -,TRUE,Dead Horse M132.9,,6
+Sunscreen,Medical,1,- none -,- none -,TRUE,Schnebly Hill M176.1,,6
+Sunscreen,Medical,1,- none -,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,6
+Cash + ID,Docs,1,- none -,FALSE,FALSE,Start (direct-to-finish),Vest pocket — Watson Lake $5 entry,1
+"Battery pack (10,000 mAh)",Electronics,1,TRUE,- none -,TRUE,Fain Ranch M96.5,,2
+"Battery pack (10,000 mAh)",Electronics,1,TRUE,- none -,TRUE,Munds Park M190.0,,2
+Phone cable (USB-C),Electronics,1,TRUE,TRUE,- none -,Start (direct-to-finish),,2
+Watch charger,Electronics,1,TRUE,TRUE,- none -,Start (direct-to-finish),Charge during sleep stops,1
+Drop bag containers,Other,15,TRUE,- none -,- none -,(none),Labeled with bib + AS name,15
+Velcro,Other,1,TRUE,- none -,- none -,(none),,1
+Super glue,Other,1,TRUE,- none -,- none -,(none),,1
+Alcohol swaps,Other,1,TRUE,- none -,- none -,(none),,1
+Sharpie,Other,1,TRUE,- none -,- none -,(none),,1
+Calluse file,Other,1,TRUE,- none -,- none -,(none),,1
+Earplugs,Other,1,TRUE,TRUE,TRUE,Start (direct-to-finish),,3
+Earplugs,Other,1,TRUE,- none -,TRUE,Dead Horse M132.9,,3
+Earplugs,Other,1,TRUE,- none -,TRUE,Fort Tuthill M211.0 (CK bag rolls here),,3
+Headlamp,Spare,1,TRUE,- none -,TRUE,Sedona Posse M159.1,Biolite - Just in case,3
+Headlamp spare batteries,Spare,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,3
+Headlamp spare batteries,Spare,1,TRUE,- none -,TRUE,Walnut Canyon M227.1,,3
+Gloves,Spare,1,TRUE,- none -,TRUE,Sedona Posse M159.1,Janji,2
+Race vest,Spare,1,TRUE,- none -,FALSE,,Alpha 6 vest,3
+Race vest,Spare,1,TRUE,- none -,FALSE,,Alpha 6 vest,3
+Race belt,Spare,1,TRUE,- none -,TRUE,Mingus Mountain M107.2,Ultraspire belt - Mingus mountain is the start of bigger AS gaps,1
+Soft flask 500 mL w/ lock valve,Spare,2,TRUE,- none -,TRUE,Mingus Mountain M107.2,Fluids - pair with ultraspire belt and pack it inside already,4
+Soft flask 500 mL w/ lock valve,Spare,2,TRUE,- none -,FALSE,,Fluids,4
+Soft flask 650 mL w/ lock valve,Spare,1,TRUE,- none -,FALSE,,Fluids,4
+Soft flask 650 mL w/ lock valve,Spare,1,TRUE,- none -,TRUE,Deer Pass M146.9,Fluids,4
+Soft flask 150 mL w/ twist valve,Spare,2,TRUE,- none -,FALSE,,Custom carb mix,2
+Spare lock valve,Spare,6,TRUE,- none -,FALSE,,Fluids,6
+Soft flask 1 L w/ blottle,Spare,1,TRUE,- none -,FALSE,,Fluids,2
+Lube,Spare,1,TRUE,- none -,TRUE,Camp Wamatochick M67.4,Larger one,4
+Lube,Spare,1,TRUE,- none -,TRUE,Dead Horse M132.9,Small one,4
+Lube,Spare,1,TRUE,- none -,TRUE,Munds Park M190.0,Larger one,4
+Leukotape,Spare,1,TRUE,- none -,TRUE,Deer Pass M146.9,Leftover roll,2
+Phone cable (USB-C),Spare,1,TRUE,- none -,TRUE,Sedona Posse M159.1,,2
