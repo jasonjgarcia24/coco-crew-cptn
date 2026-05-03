@@ -172,6 +172,52 @@ tbody tr[data-as].highlighted td {
   background: #FFCC80;
 }
 
+/* Pace dropdown — default-closed details inside each AS card. Shows live
+   wall clock, the A-GOAL target arrival, and an on-track/behind status.
+   Status uses the click-to-highlight timestamp as the assumed arrival;
+   if the card isn't highlighted, status falls back to comparing live now
+   vs. target ("if you arrived now, you'd be …"). */
+.pace-section {
+  margin: 6px 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.pace-summary {
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-soft);
+}
+.pace-body {
+  padding: 4px 12px 8px;
+  font-size: 14px;
+}
+.pace-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+.pace-label {
+  color: var(--fg-soft);
+  font-weight: 600;
+}
+.pace-now, .pace-target {
+  font-variant-numeric: tabular-nums;
+}
+.pace-status {
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  background: var(--pill-bg);
+  color: var(--fg-soft);
+}
+.pace-status.pace-ahead { background: #C8E6C9; color: #1B5E20; }
+.pace-status.pace-behind { background: #FFCDD2; color: #B71C1C; }
+.pace-status.pace-pending { background: var(--pill-bg); color: var(--fg-soft); }
+
 /* Drop-bag contents synced from the Pacing Chart Gear Checklist tab.
    Default-closed details inside each AS card with a drop bag.
    Bordered + own background so it stays distinct whether the parent
@@ -227,7 +273,7 @@ tbody tr[data-as].highlighted td {
 <a id="top"></a>
 <header class="topbar">
   <h1>🏃 Cocodona 250</h1>
-  <small>May 02, 2026, 09:37 PM</small>
+  <small>May 03, 2026, 09:14 AM</small>
 </header>
 <nav class="toc">
   <a href="#race-at-a-glance">🗺️ Glance</a>
@@ -393,14 +439,14 @@ tbody tr[data-as].highlighted td {
 </tr>
 </tbody></table>
 </div></details><details open class="h2-section" id="hot-opening-start-to-crown-king"><summary class="h2-summary"><h2>🔥🪨 Hot opening — Start to Crown King</h2></summary><div class="h2-body">
-<div class="card card-odd" data-as="m0"><h3 id="m0-start-deep-canyon-ranch">M0 · Start: Deep Canyon Ranch · 🎒</h3>
+<div class="card card-odd" data-as="m0" data-target="2026-05-04T12:00:00.000Z"><h3 id="m0-start-deep-canyon-ranch">M0 · Start: Deep Canyon Ranch · 🎒</h3>
 <ul>
 <li>🟢🟡 5:00 AM Mon - 5:00 AM Mon (mass start)</li>
 <li>⚠️ <strong>4 L water capacity check</strong></li>
 <li>→ Cottonwood +7.4 mi · — (rolling, +1,423/-1,339)</li>
 <li>🎒 next: +36.6 mi → Crown King</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (2 items)</summary><ul class="gear-list"><li><strong>Antihistamine</strong> <span class="gear-qty">×8</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m74"><h3 id="m74-cottonwood-creek">M7.4 · Cottonwood Creek</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">5:00 AM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (2 items)</summary><ul class="gear-list"><li><strong>Antihistamine</strong> <span class="gear-qty">×8</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m74" data-target="2026-05-04T13:38:00.000Z"><h3 id="m74-cottonwood-creek">M7.4 · Cottonwood Creek</h3>
 <ul>
 <li>🟢🟡 6:19 AM Mon - 6:38 AM Mon</li>
 <li>⚠️ <strong>Leave w/ 4 L MIN water</strong></li>
@@ -409,14 +455,14 @@ tbody tr[data-as].highlighted td {
 <li>1 L water at M10.4 + M24.6</li>
 <li>🎒 next: +29.2 mi → Crown King</li>
 </ul>
-</div><div class="card card-odd" data-as="m325"><h3 id="m325-lane-mtn">M32.5 · Lane Mtn · ⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">6:38 AM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-odd" data-as="m325" data-target="2026-05-04T22:21:00.000Z"><h3 id="m325-lane-mtn">M32.5 · Lane Mtn · ⚕️</h3>
 <ul>
 <li>🟢🟡 1:20 PM Mon - 3:21 PM Mon</li>
 <li>← Cottonwood +25.1 mi</li>
 <li>→ Crown King +4.1 mi · +338&#39;/-1,304&#39;</li>
 <li>🎒 next: +4.1 mi → Crown King</li>
 </ul>
-</div><div class="card card-even" data-as="m366"><h3 id="m366-crown-king">M36.6 · Crown King · 🎒⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">3:21 PM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-even" data-as="m366" data-target="2026-05-04T23:38:00.000Z"><h3 id="m366-crown-king">M36.6 · Crown King · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 2:20 PM Mon - 4:38 PM Mon</li>
 <li><strong>Dropbag rolls to Fort Tuthill M211</strong></li>
@@ -425,8 +471,8 @@ tbody tr[data-as].highlighted td {
 <li>→ Arrastra +14.4 mi · 🥶 +2,005&#39;/-2,524&#39;</li>
 <li>🎒 next: +24.2 mi → Kamp Kipa</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (11 items)</summary><ul class="gear-list"><li><strong>Gloves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Patagonia - On person from CK forward</em></li><li><strong>Beanie</strong> <span class="gear-qty">×1</span> <em class="gear-notes">On person from CK forward</em></li><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Long sleeve top</strong> <span class="gear-qty">×1</span> <em class="gear-notes">On person from CK forward</em></li><li><strong>Insulatory upper layer (puffy)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">TNF hooded puffy</em></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×4</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span> <em class="gear-notes">1 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Electrlyte drink</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li></ul></details></div></div></details><details open class="h2-section" id="bradshaws-arrastra-to-fain-ranch"><summary class="h2-summary"><h2>🥶 Bradshaws — Arrastra to Fain Ranch</h2></summary><div class="h2-body">
-<div class="card card-odd" data-as="m51"><h3 id="m51-arrastra-creek">M51 · Arrastra Creek</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">4:38 PM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (11 items)</summary><ul class="gear-list"><li><strong>Gloves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Patagonia - On person from CK forward</em></li><li><strong>Beanie</strong> <span class="gear-qty">×1</span> <em class="gear-notes">On person from CK forward</em></li><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Long sleeve top</strong> <span class="gear-qty">×1</span> <em class="gear-notes">On person from CK forward</em></li><li><strong>Insulatory upper layer (puffy)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">TNF hooded puffy</em></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×4</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span> <em class="gear-notes">1 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Electrlyte drink</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li></ul></details></div></div></details><details open class="h2-section" id="bradshaws-arrastra-to-fain-ranch"><summary class="h2-summary"><h2>🥶 Bradshaws — Arrastra to Fain Ranch</h2></summary><div class="h2-body">
+<div class="card card-odd" data-as="m51" data-target="2026-05-05T02:50:00.000Z"><h3 id="m51-arrastra-creek">M51 · Arrastra Creek</h3>
 <ul>
 <li>🟢🟡 4:51 PM Mon - 7:50 PM Mon</li>
 <li>Pass-through, refuel</li>
@@ -434,7 +480,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Kamp Kipa +9.8 mi · 🥶 +3,012&#39;/-841&#39; 🪨 🏔️</li>
 <li>🎒 next: +9.8 mi → Kamp Kipa</li>
 </ul>
-</div><div class="card card-even" data-as="m608"><h3 id="m608-kamp-kipa">M60.8 · Kamp Kipa · 🎒💤</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">7:50 PM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-even" data-as="m608" data-target="2026-05-05T05:06:00.000Z"><h3 id="m608-kamp-kipa">M60.8 · Kamp Kipa · 🎒💤</h3>
 <ul>
 <li>🟢🟡 6:39 PM Mon - 10:06 PM Mon</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -442,7 +488,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Camp Wamatochick +6.6 mi · +481&#39;/-1,503&#39;</li>
 <li>🎒 next: +6.6 mi → Camp Wamatochick</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (12 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×1</span> <em class="gear-notes">1 normal</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Mount2Coast H1 - Size 9</em></li><li><strong>Gaiters</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Attached to M2C H1</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Vapor inhaler</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Use to keep awake - take with</em></li><li><strong>Saline nasal spray</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Do not take with</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m674"><h3 id="m674-camp-wamatochick">M67.4 · Camp Wamatochick · 🎒💤🚿</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">10:06 PM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (12 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×1</span> <em class="gear-notes">1 normal</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Mount2Coast H1 - Size 9</em></li><li><strong>Gaiters</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Attached to M2C H1</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Vapor inhaler</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Use to keep awake - take with</em></li><li><strong>Saline nasal spray</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Do not take with</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m674" data-target="2026-05-05T06:47:00.000Z"><h3 id="m674-camp-wamatochick">M67.4 · Camp Wamatochick · 🎒💤🚿</h3>
 <ul>
 <li>🟢🟡 7:57 PM Mon - 11:47 PM Mon</li>
 <li><strong>30 min sleep</strong></li>
@@ -450,7 +496,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Whiskey Row +8.2 mi · +438&#39;/-1,491&#39;</li>
 <li>🎒 next: +8.2 mi → Whiskey Row</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (12 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">1 normal</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Thanksgiving 5k shirt</em></li><li><strong>Sun hat</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Cowgill cap</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji half tights - should be helpful for the night</em></li><li><strong>Socks</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Keep previous socks, wash in shower, hang on vest to dry/reuse</em></li><li><strong>Small towel</strong> <span class="gear-qty">×3</span> <em class="gear-notes">Towels for shower stations</em></li><li><strong>Soap</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Soap for shower stations</em></li><li><strong>Eye drops</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Larger one</em></li></ul></details></div><div class="card card-even" data-as="m756"><h3 id="m756-whiskey-row">M75.6 · Whiskey Row · 🎒💤⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">11:47 PM Mon</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (12 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">1 normal</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Thanksgiving 5k shirt</em></li><li><strong>Sun hat</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Cowgill cap</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji half tights - should be helpful for the night</em></li><li><strong>Socks</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Keep previous socks, wash in shower, hang on vest to dry/reuse</em></li><li><strong>Small towel</strong> <span class="gear-qty">×3</span> <em class="gear-notes">Towels for shower stations</em></li><li><strong>Soap</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Soap for shower stations</em></li><li><strong>Eye drops</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Larger one</em></li></ul></details></div><div class="card card-even" data-as="m756" data-target="2026-05-05T09:46:00.000Z"><h3 id="m756-whiskey-row">M75.6 · Whiskey Row · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 10:28 PM Mon - 2:46 AM Tue</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -458,7 +504,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Watson Lake +7.2 mi</li>
 <li>🎒 next: +20.9 mi → Fain Ranch</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (4 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×4</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span> <em class="gear-notes">1 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×4</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m828"><h3 id="m828-watson-lake">M82.8 · Watson Lake</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">2:46 AM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (4 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×4</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span> <em class="gear-notes">1 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×4</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m828" data-target="2026-05-05T11:29:00.000Z"><h3 id="m828-watson-lake">M82.8 · Watson Lake</h3>
 <ul>
 <li>🟢🟡 11:47 PM Mon - 4:29 AM Tue</li>
 <li>Pass-through</li>
@@ -466,7 +512,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Fain Ranch +13.7 mi · 🪨 (Granite Dells)</li>
 <li>🎒 next: +13.7 mi → Fain Ranch</li>
 </ul>
-</div><div class="card card-even" data-as="m965"><h3 id="m965-fain-ranch">M96.5 · Fain Ranch · 🎒</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">4:29 AM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-even" data-as="m965" data-target="2026-05-05T14:55:00.000Z"><h3 id="m965-fain-ranch">M96.5 · Fain Ranch · 🎒</h3>
 <ul>
 <li>🟢🟡 2:32 AM Tue - 7:55 AM Tue</li>
 <li>⚠️ <strong>Full kit check</strong> — IF leaving after 10 AM</li>
@@ -474,8 +520,8 @@ tbody tr[data-as].highlighted td {
 <li>→ Mingus +10.7 mi · 🔥 🏔️ +2,862&#39;/-284&#39; (altitude ~7,800&#39;)</li>
 <li>🎒 next: +10.7 mi → Mingus</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (13 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span> <em class="gear-notes">1 normal / 1 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Grey rabbit sun-hoody</em></li><li><strong>Ice bandana</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Fain Ranch to Schnebly is hot - can drop after Schnebly</em></li><li><strong>Sunglasses</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Julbo sunglasses</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji light shorts</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Battery pack (10,000 mAh)</strong> <span class="gear-qty">×1</span></li></ul></details></div></div></details><details open class="h2-section" id="verde-valley-sedona-mingus-to-sedona-posse"><summary class="h2-summary"><h2>🔥 Verde Valley &amp; Sedona — Mingus to Sedona Posse</h2></summary><div class="h2-body">
-<div class="card card-odd" data-as="m1072"><h3 id="m1072-mingus-mountain-780039">M107.2 · Mingus Mountain (~7,800&#39;) · 🎒💤🚿⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">7:55 AM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (13 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span> <em class="gear-notes">1 normal / 1 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Grey rabbit sun-hoody</em></li><li><strong>Ice bandana</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Fain Ranch to Schnebly is hot - can drop after Schnebly</em></li><li><strong>Sunglasses</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Julbo sunglasses</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji light shorts</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Battery pack (10,000 mAh)</strong> <span class="gear-qty">×1</span></li></ul></details></div></div></details><details open class="h2-section" id="verde-valley-sedona-mingus-to-sedona-posse"><summary class="h2-summary"><h2>🔥 Verde Valley &amp; Sedona — Mingus to Sedona Posse</h2></summary><div class="h2-body">
+<div class="card card-odd" data-as="m1072" data-target="2026-05-05T18:36:00.000Z"><h3 id="m1072-mingus-mountain-780039">M107.2 · Mingus Mountain (~7,800&#39;) · 🎒💤🚿⚕️</h3>
 <ul>
 <li>🟢🟡 5:27 AM Tue - 11:36 AM Tue</li>
 <li>Indoor sleep (NOT used in plan)</li>
@@ -483,7 +529,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Jerome +17.0 mi · 🔥 🪨 +1,750&#39;/-4,428&#39;</li>
 <li>🎒 next: +25.7 mi → Dead Horse</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (9 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×4</span> <em class="gear-notes">2 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Electrlyte drink</strong> <span class="gear-qty">×1</span></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Race belt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Ultraspire belt - Mingus mountain is the start of bigger AS gaps</em></li><li><strong>Soft flask 500 mL w/ lock valve</strong> <span class="gear-qty">×2</span> <em class="gear-notes">Fluids - pair with ultraspire belt and pack it inside already</em></li></ul></details></div><div class="card card-even" data-as="m1242"><h3 id="m1242-jerome">M124.2 · Jerome</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">11:36 AM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (9 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×4</span> <em class="gear-notes">2 normal / 2 w/ 60g carbs</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Electrlyte drink</strong> <span class="gear-qty">×1</span></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Race belt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Ultraspire belt - Mingus mountain is the start of bigger AS gaps</em></li><li><strong>Soft flask 500 mL w/ lock valve</strong> <span class="gear-qty">×2</span> <em class="gear-notes">Fluids - pair with ultraspire belt and pack it inside already</em></li></ul></details></div><div class="card card-even" data-as="m1242" data-target="2026-05-05T22:56:00.000Z"><h3 id="m1242-jerome">M124.2 · Jerome</h3>
 <ul>
 <li>🟢🟡 8:59 AM Tue - 3:56 PM Tue</li>
 <li>Pass-through</li>
@@ -491,7 +537,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Dead Horse +8.7 mi · 🔥 +356&#39;/-1,976&#39; (Verde River)</li>
 <li>🎒 next: +8.7 mi → Dead Horse</li>
 </ul>
-</div><div class="card card-odd" data-as="m1329"><h3 id="m1329-dead-horse">M132.9 · Dead Horse · 🎒💤🚿⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">3:56 PM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-odd" data-as="m1329" data-target="2026-05-06T00:56:00.000Z"><h3 id="m1329-dead-horse">M132.9 · Dead Horse · 🎒💤🚿⚕️</h3>
 <ul>
 <li>🟢🟡 10:33 AM Tue - 5:56 PM Tue</li>
 <li>Outdoor sleep (NOT used in plan)</li>
@@ -499,14 +545,14 @@ tbody tr[data-as].highlighted td {
 <li>→ Deer Pass +14.0 mi · 🪨</li>
 <li>🎒 next: +14.0 mi → Deer Pass</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (14 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×3</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Tarignota shirt</em></li><li><strong>Sun sleeves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Rabbit white sleeves</em></li><li><strong>Socks</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Keep previous socks, wash in shower, hang on vest to dry/reuse</em></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Hoka Challenger #2 - Size 9</em></li><li><strong>Small towel</strong> <span class="gear-qty">×3</span> <em class="gear-notes">Towels for shower stations</em></li><li><strong>Soap</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Soap for shower stations</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Small one</em></li></ul></details></div><div class="card card-even" data-as="m1469"><h3 id="m1469-deer-pass">M146.9 · Deer Pass · 🎒</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">5:56 PM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (14 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×3</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Tarignota shirt</em></li><li><strong>Sun sleeves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Rabbit white sleeves</em></li><li><strong>Socks</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Keep previous socks, wash in shower, hang on vest to dry/reuse</em></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Hoka Challenger #2 - Size 9</em></li><li><strong>Small towel</strong> <span class="gear-qty">×3</span> <em class="gear-notes">Towels for shower stations</em></li><li><strong>Soap</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Soap for shower stations</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Small one</em></li></ul></details></div><div class="card card-even" data-as="m1469" data-target="2026-05-06T04:26:00.000Z"><h3 id="m1469-deer-pass">M146.9 · Deer Pass · 🎒</h3>
 <ul>
 <li>🟢🟡 1:19 PM Tue - 9:26 PM Tue</li>
 <li>← Dead Horse +14.0 mi</li>
 <li>→ Sedona Posse +12.2 mi · 🔥 (water station M153.6)</li>
 <li>🎒 next: +12.2 mi → Sedona Posse</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (7 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Soft flask 650 mL w/ lock valve</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Fluids</em></li><li><strong>Leukotape</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Leftover roll</em></li></ul></details></div><div class="card card-odd" data-as="m1591"><h3 id="m1591-sedona-posse">M159.1 · Sedona Posse · 🎒💤⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">9:26 PM Tue</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (7 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Soft flask 650 mL w/ lock valve</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Fluids</em></li><li><strong>Leukotape</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Leftover roll</em></li></ul></details></div><div class="card card-odd" data-as="m1591" data-target="2026-05-06T07:32:00.000Z"><h3 id="m1591-sedona-posse">M159.1 · Sedona Posse · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 3:45 PM Tue - 12:32 AM Wed</li>
 <li><strong>60 min sleep</strong></li>
@@ -515,8 +561,8 @@ tbody tr[data-as].highlighted td {
 <li>→ Schnebly Hill +17.0 mi · 🔥 🪨 🏔️ +3,580&#39;/-1,628&#39; (altitude ~7,000&#39;)</li>
 <li>🎒 next: +17.0 mi → Schnebly Hill</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (16 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Insulatory upper layer (puffy)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">REI hoodless puffy</em></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Vulture shirt</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji half tights - should be helpful for the night</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Headlamp</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Biolite - Just in case</em></li><li><strong>Headlamp spare batteries</strong> <span class="gear-qty">×1</span></li><li><strong>Gloves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji</em></li><li><strong>Phone cable (USB-C)</strong> <span class="gear-qty">×1</span></li></ul></details></div></div></details><details open class="h2-section" id="cold-mountains-finish-schnebly-to-heritage-sq"><summary class="h2-summary"><h2>🥶🏔️ Cold mountains &amp; finish — Schnebly to Heritage Sq</h2></summary><div class="h2-body">
-<div class="card card-odd" data-as="m1761"><h3 id="m1761-schnebly-hill">M176.1 · Schnebly Hill · 🎒⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">12:32 AM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (16 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Insulatory upper layer (puffy)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">REI hoodless puffy</em></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shirt</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Vulture shirt</em></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji half tights - should be helpful for the night</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Headlamp</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Biolite - Just in case</em></li><li><strong>Headlamp spare batteries</strong> <span class="gear-qty">×1</span></li><li><strong>Gloves</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Janji</em></li><li><strong>Phone cable (USB-C)</strong> <span class="gear-qty">×1</span></li></ul></details></div></div></details><details open class="h2-section" id="cold-mountains-finish-schnebly-to-heritage-sq"><summary class="h2-summary"><h2>🥶🏔️ Cold mountains &amp; finish — Schnebly to Heritage Sq</h2></summary><div class="h2-body">
+<div class="card card-odd" data-as="m1761" data-target="2026-05-06T14:07:00.000Z"><h3 id="m1761-schnebly-hill">M176.1 · Schnebly Hill · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 9:06 PM Tue - 7:07 AM Wed</li>
 <li>Drop bag + medic (no sleep here)</li>
@@ -524,7 +570,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Munds Park +13.9 mi · 🥶 🏔️ (Coconino Plateau, upper-30s°F)</li>
 <li>🎒 next: +13.9 mi → Munds Park</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (8 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×0</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×0</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×0</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Sun hat</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Badger cap</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Eye drops</strong> <span class="gear-qty">×1</span></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m1900"><h3 id="m1900-munds-park">M190.0 · Munds Park · 🎒💤⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">7:07 AM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (8 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×0</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×0</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×0</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Sun hat</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Badger cap</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Eye drops</strong> <span class="gear-qty">×1</span></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m1900" data-target="2026-05-06T17:27:00.000Z"><h3 id="m1900-munds-park">M190.0 · Munds Park · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 11:44 PM Tue - 10:27 AM Wed</li>
 <li>Outdoor sleep (NOT used in plan)</li>
@@ -533,7 +579,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Kelly Canyon +12.7 mi · 🥶 🪨 🏔️</li>
 <li>🎒 next: +21.0 mi → Fort Tuthill</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (14 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×3</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×4</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Hoka Challenger #3 - Size 9.5</em></li><li><strong>Gaiters</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Attached to Hoka Challenger #3</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Vapor inhaler</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Use to keep awake - take with</em></li><li><strong>Battery pack (10,000 mAh)</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Larger one</em></li></ul></details></div><div class="card card-odd" data-as="m2027"><h3 id="m2027-kelly-canyon">M202.7 · Kelly Canyon</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">10:27 AM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (14 items)</summary><ul class="gear-list"><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×3</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×3</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×4</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Shoes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Hoka Challenger #3 - Size 9.5</em></li><li><strong>Gaiters</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Attached to Hoka Challenger #3</em></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Vapor inhaler</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Use to keep awake - take with</em></li><li><strong>Battery pack (10,000 mAh)</strong> <span class="gear-qty">×1</span></li><li><strong>Lube</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Larger one</em></li></ul></details></div><div class="card card-odd" data-as="m2027" data-target="2026-05-06T20:22:00.000Z"><h3 id="m2027-kelly-canyon">M202.7 · Kelly Canyon</h3>
 <ul>
 <li>🟢🟡 2:01 AM Wed - 1:22 PM Wed</li>
 <li>Pass-through</li>
@@ -541,7 +587,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Fort Tuthill +8.3 mi · 🥶 🏔️</li>
 <li>🎒 next: +8.3 mi → Fort Tuthill</li>
 </ul>
-</div><div class="card card-even" data-as="m2110"><h3 id="m2110-fort-tuthill">M211.0 · Fort Tuthill · 🎒💤⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">1:22 PM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-even" data-as="m2110" data-target="2026-05-06T22:10:00.000Z"><h3 id="m2110-fort-tuthill">M211.0 · Fort Tuthill · 🎒💤⚕️</h3>
 <ul>
 <li>🟢🟡 3:26 AM Wed - 3:10 PM Wed</li>
 <li><strong>30 min sleep</strong></li>
@@ -551,14 +597,14 @@ tbody tr[data-as].highlighted td {
 <li>→ Walnut Canyon +16.1 mi · 🥶 🏔️</li>
 <li>🎒 next: +16.1 mi → Walnut Canyon</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (9 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Sayski shorts</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m2271"><h3 id="m2271-walnut-canyon">M227.1 · Walnut Canyon · 🎒⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">3:10 PM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (9 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>LiquidIV packets</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Shorts</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Sayski shorts</em></li><li><strong>Sunscreen</strong> <span class="gear-qty">×1</span></li><li><strong>Earplugs</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-odd" data-as="m2271" data-target="2026-05-07T02:39:00.000Z"><h3 id="m2271-walnut-canyon">M227.1 · Walnut Canyon · 🎒⚕️</h3>
 <ul>
 <li>🟢🟡 7:02 AM Wed - 7:39 PM Wed</li>
 <li>← Fort Tuthill +16.1 mi</li>
 <li>→ Wildcat +7.0 mi · 🥶 🏔️</li>
 <li>🎒 next: +7.0 mi → Wildcat Hill</li>
 </ul>
-<details class="gear-section"><summary class="gear-summary">🎒 Drop bag (15 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Caffeine post-CK only — 2 on hand</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Saline nasal spray</strong> <span class="gear-qty">×1</span></li><li><strong>Headlamp spare batteries</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m2341"><h3 id="m2341-wildcat-hill">M234.1 · Wildcat Hill · 🎒</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">7:39 PM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details><details class="gear-section"><summary class="gear-summary">🎒 Drop bag (15 items)</summary><ul class="gear-list"><li><strong>Buffs</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (no caf)</strong> <span class="gear-qty">×2</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span></li><li><strong>Neversecond C30 gels (caf)</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Caffeine post-CK only — 2 on hand</em></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×2</span></li><li><strong>Fruit gummies</strong> <span class="gear-qty">×3</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Coconut water</strong> <span class="gear-qty">×1</span></li><li><strong>Socks</strong> <span class="gear-qty">×1</span></li><li><strong>Wetwipes</strong> <span class="gear-qty">×1</span> <em class="gear-notes">Wetwipe baths</em></li><li><strong>Toothbrush</strong> <span class="gear-qty">×1</span></li><li><strong>Mouthwash</strong> <span class="gear-qty">×1</span></li><li><strong>Saline nasal spray</strong> <span class="gear-qty">×1</span></li><li><strong>Headlamp spare batteries</strong> <span class="gear-qty">×1</span></li></ul></details></div><div class="card card-even" data-as="m2341" data-target="2026-05-07T04:27:00.000Z"><h3 id="m2341-wildcat-hill">M234.1 · Wildcat Hill · 🎒</h3>
 <ul>
 <li>🟢🟡 8:26 AM Wed - 9:27 PM Wed</li>
 <li>⚠️ <strong>Last full kit check</strong></li>
@@ -566,7 +612,7 @@ tbody tr[data-as].highlighted td {
 <li>→ Trinity +15.3 mi · 🥶 🪨 🏔️ +3,386&#39;/-3,055&#39; (altitude 9,000&#39;)</li>
 <li>🎒 next: +19.2 mi → Finish</li>
 </ul>
-</div><div class="card card-odd" data-as="m2494"><h3 id="m2494-trinity-heights">M249.4 · Trinity Heights</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">9:27 PM Wed</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-odd" data-as="m2494" data-target="2026-05-07T08:06:00.000Z"><h3 id="m2494-trinity-heights">M249.4 · Trinity Heights</h3>
 <ul>
 <li>🟢🟡 11:18 AM Wed - 1:06 AM Thu</li>
 <li>Last AS, push 3.9 mi</li>
@@ -574,13 +620,13 @@ tbody tr[data-as].highlighted td {
 <li>→ 🏁 FINISH +3.9 mi · — (urban gentle)</li>
 <li>🎒 next: +3.9 mi → Finish</li>
 </ul>
-</div><div class="card card-even" data-as="m2533"><h3 id="m2533-heritage-square-finish">M253.3 · 🏁 Heritage Square FINISH · 🎒⚕️</h3>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">1:06 AM Thu</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div><div class="card card-even" data-as="m2533" data-target="2026-05-07T09:00:00.000Z"><h3 id="m2533-heritage-square-finish">M253.3 · 🏁 Heritage Square FINISH · 🎒⚕️</h3>
 <ul>
 <li>← Trinity +3.9 mi</li>
 <li>🟢🟡 12:00 PM Wed - 2:00 AM Thu</li>
 <li>🏁 You&#39;re done!!</li>
 </ul>
-</div></div></details></div>
+<details class="pace-section"><summary class="pace-summary">⏱ Pace</summary><div class="pace-body"><div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div><div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">2:00 AM Thu</span></div><div class="pace-status">Tap the card to mark arrived.</div></div></details></div></div></details></div>
   </details>
   <details open class="top-section" id="race-brief">
     <summary class="top-summary">📋 Race Brief</summary>
@@ -611,35 +657,117 @@ tbody tr[data-as].highlighted td {
 </main>
 <a class="fab" href="#top" aria-label="Back to top">⬆</a>
 <script>
-// Tap-to-highlight aid stations. State stored in localStorage as a JSON
-// array of mile-slugs (e.g. ["m74","m366"]) under STORE_KEY. Card and
-// row share the same data-as so they highlight in lockstep.
+// Tap-to-highlight aid stations + pace tracking.
+//
+// localStorage shape (under STORE_KEY):
+//   { "m74": 1715252100000, "m366": null, ... }
+//   - key   = mile-slug shared between card and at-a-glance row
+//   - value = ms epoch when the card was tapped (=> assumed arrival)
+//             or null if highlighted but timestamp unknown (legacy data)
+//
+// Migration: older builds stored a plain array (["m74","m366"]); convert
+// to the new object form with null timestamps so legacy highlights survive.
 (function () {
   var STORE_KEY = 'cocodona-as-highlights';
-  var state;
-  try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }
-  catch (e) { state = []; }
-  if (!Array.isArray(state)) state = [];
+  var state = {};
+  try {
+    var raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    if (Array.isArray(raw)) {
+      raw.forEach(function (slug) { state[slug] = null; });
+    } else if (raw && typeof raw === 'object') {
+      state = raw;
+    }
+  } catch (e) { state = {}; }
 
-  function paint() {
+  var DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  function fmtRaceTime(d) {
+    var h = d.getHours();
+    var mm = String(d.getMinutes()).padStart(2, '0');
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + mm + ' ' + ampm + ' ' + DAY_NAMES[d.getDay()];
+  }
+  function fmtDelta(min) {
+    if (min === 0) return 'on the dot';
+    var abs = Math.abs(min);
+    if (abs >= 60) {
+      var h = Math.floor(abs / 60);
+      var m = abs % 60;
+      return h + 'h ' + (m ? m + 'm ' : '') + (min > 0 ? 'ahead' : 'behind');
+    }
+    return abs + ' min ' + (min > 0 ? 'ahead' : 'behind');
+  }
+
+  function paintHighlights() {
+    var ids = Object.keys(state);
     document.querySelectorAll('[data-as]').forEach(function (el) {
-      el.classList.toggle('highlighted', state.indexOf(el.dataset.as) !== -1);
+      el.classList.toggle('highlighted', ids.indexOf(el.dataset.as) !== -1);
     });
   }
-  paint();
+
+  function refreshPace() {
+    var now = new Date();
+    var nowLabel = fmtRaceTime(now);
+    document.querySelectorAll('.card[data-target]').forEach(function (card) {
+      var target = new Date(card.dataset.target);
+      if (isNaN(target.getTime())) return;
+      var slug = card.dataset.as;
+      var arrivedMs = (slug in state) ? state[slug] : undefined;
+      var nowEl = card.querySelector('.pace-now');
+      var statusEl = card.querySelector('.pace-status');
+      if (nowEl) nowEl.textContent = nowLabel;
+      if (!statusEl) return;
+
+      if (typeof arrivedMs === 'number') {
+        // Highlighted with known arrival timestamp — frozen comparison.
+        var arrived = new Date(arrivedMs);
+        var deltaMin = Math.round((target - arrived) / 60000);
+        statusEl.textContent =
+          'Arrived ' + fmtRaceTime(arrived) + ' · ' +
+          (deltaMin >= 0 ? '✓ ' : '⚠ ') + fmtDelta(deltaMin);
+        statusEl.className = 'pace-status ' + (deltaMin >= 0 ? 'pace-ahead' : 'pace-behind');
+      } else if (arrivedMs === null) {
+        // Highlighted but no timestamp (legacy) — fall back to live compare.
+        var liveDelta = Math.round((target - now) / 60000);
+        statusEl.textContent =
+          'Marked arrived (no timestamp) · ' +
+          (liveDelta >= 0 ? '✓ ' : '⚠ ') + fmtDelta(liveDelta) + ' if now';
+        statusEl.className = 'pace-status ' + (liveDelta >= 0 ? 'pace-ahead' : 'pace-behind');
+      } else {
+        // Not marked. Show predictive "would be X if arrived now".
+        var predDelta = Math.round((target - now) / 60000);
+        statusEl.textContent =
+          'Tap card to mark arrived · would be ' + fmtDelta(predDelta) + ' now';
+        statusEl.className = 'pace-status pace-pending';
+      }
+    });
+  }
+
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+  }
+
+  paintHighlights();
+  refreshPace();
+  setInterval(refreshPace, 60000);
 
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-as]');
     if (!el) return;
-    // Don't hijack taps on real anchor links or on nested <summary>
-    // elements (e.g. the drop-bag collapsible inside a card).
+    // Skip clicks on anchors, summaries, or anything inside the nested
+    // gear/pace dropdowns — those have their own behavior.
     if (e.target.closest('a')) return;
     if (e.target.closest('summary')) return;
+    if (e.target.closest('.gear-section, .pace-section')) return;
     var id = el.dataset.as;
-    var idx = state.indexOf(id);
-    if (idx === -1) state.push(id); else state.splice(idx, 1);
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
-    paint();
+    if (id in state) {
+      delete state[id];
+    } else {
+      state[id] = Date.now();
+    }
+    save();
+    paintHighlights();
+    refreshPace();
   });
 })();
 </script>

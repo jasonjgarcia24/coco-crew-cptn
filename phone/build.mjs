@@ -87,8 +87,11 @@ function wrapCardsInBody(body, gearData) {
     const h3match = card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/);
     const slug = h3match ? extractMileSlug(h3match[1]) : null;
     const dataAttr = slug ? ` data-as="${slug}"` : '';
+    const target = extractAGoalTarget(card);
+    const targetAttr = target.iso ? ` data-target="${target.iso}"` : '';
     const gear = (gearData && slug) ? renderGearSection(gearData.get(slug)) : '';
-    return `<div class="${cls}"${dataAttr}>${card}${gear}</div>`;
+    const pace = slug ? renderPaceSection(target) : '';
+    return `<div class="${cls}"${dataAttr}${targetAttr}>${card}${pace}${gear}</div>`;
   });
   return head + cards.join('');
 }
@@ -190,6 +193,58 @@ function renderGearSection(items) {
   return `<details class="gear-section">` +
     `<summary class="gear-summary">🎒 Drop bag (${items.length} ${items.length === 1 ? 'item' : 'items'})</summary>` +
     `<ul class="gear-list">${lis}</ul>` +
+    `</details>`;
+}
+
+// === Pace tracking ===
+// A-GOAL is the realistic target per the race brief, so each AS card gets
+// the A-GOAL arrival time embedded as data-target (ISO 8601). Runtime JS
+// compares wall-clock now (or the click-to-highlight timestamp if marked)
+// against the target to flag on-track / behind.
+
+const RACE_DAY_MAP = {
+  Sun: 3, Mon: 4, Tue: 5, Wed: 6, Thu: 7, Fri: 8, Sat: 9, // May 2026 dates
+};
+
+// "6:38 AM Mon" → Date(2026, 4, 4, 6, 38). Returns null on parse failure.
+function parseRaceTime(s) {
+  if (!s) return null;
+  const m = s.trim().match(/^(\d{1,2}):(\d{2})\s+(AM|PM)\s+(Sun|Mon|Tue|Wed|Thu|Fri|Sat)$/);
+  if (!m) return null;
+  let h = parseInt(m[1], 10);
+  const mm = parseInt(m[2], 10);
+  const ampm = m[3];
+  const day = m[4];
+  if (ampm === 'PM' && h !== 12) h += 12;
+  if (ampm === 'AM' && h === 12) h = 0;
+  const date = RACE_DAY_MAP[day];
+  if (date == null) return null;
+  return new Date(2026, 4, date, h, mm); // month index: May = 4
+}
+
+// First 🟢🟡 bullet in a rendered card holds the arrival window:
+// "🟢🟡 6:19 AM Mon - 6:38 AM Mon". The second time is the A-GOAL target.
+function extractAGoalTarget(cardHtml) {
+  const m = cardHtml.match(
+    /<li>🟢🟡\s+\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3}\s*-\s*(\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3})\b/
+  );
+  if (!m) return { iso: null, label: null };
+  const date = parseRaceTime(m[1]);
+  return {
+    iso: date ? date.toISOString() : null,
+    label: m[1],
+  };
+}
+
+function renderPaceSection(target) {
+  if (!target.iso) return '';
+  return `<details class="pace-section">` +
+    `<summary class="pace-summary">⏱ Pace</summary>` +
+    `<div class="pace-body">` +
+      `<div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div>` +
+      `<div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">${escapeHtml(target.label)}</span></div>` +
+      `<div class="pace-status">Tap the card to mark arrived.</div>` +
+    `</div>` +
     `</details>`;
 }
 
@@ -415,6 +470,52 @@ tbody tr[data-as].highlighted td {
   background: #FFCC80;
 }
 
+/* Pace dropdown — default-closed details inside each AS card. Shows live
+   wall clock, the A-GOAL target arrival, and an on-track/behind status.
+   Status uses the click-to-highlight timestamp as the assumed arrival;
+   if the card isn't highlighted, status falls back to comparing live now
+   vs. target ("if you arrived now, you'd be …"). */
+.pace-section {
+  margin: 6px 0 4px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.pace-summary {
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-soft);
+}
+.pace-body {
+  padding: 4px 12px 8px;
+  font-size: 14px;
+}
+.pace-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+.pace-label {
+  color: var(--fg-soft);
+  font-weight: 600;
+}
+.pace-now, .pace-target {
+  font-variant-numeric: tabular-nums;
+}
+.pace-status {
+  margin-top: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-align: center;
+  background: var(--pill-bg);
+  color: var(--fg-soft);
+}
+.pace-status.pace-ahead { background: #C8E6C9; color: #1B5E20; }
+.pace-status.pace-behind { background: #FFCDD2; color: #B71C1C; }
+.pace-status.pace-pending { background: var(--pill-bg); color: var(--fg-soft); }
+
 /* Drop-bag contents synced from the Pacing Chart Gear Checklist tab.
    Default-closed details inside each AS card with a drop bag.
    Bordered + own background so it stays distinct whether the parent
@@ -499,35 +600,117 @@ const html = `<!DOCTYPE html>
 </main>
 <a class="fab" href="#top" aria-label="Back to top">⬆</a>
 <script>
-// Tap-to-highlight aid stations. State stored in localStorage as a JSON
-// array of mile-slugs (e.g. ["m74","m366"]) under STORE_KEY. Card and
-// row share the same data-as so they highlight in lockstep.
+// Tap-to-highlight aid stations + pace tracking.
+//
+// localStorage shape (under STORE_KEY):
+//   { "m74": 1715252100000, "m366": null, ... }
+//   - key   = mile-slug shared between card and at-a-glance row
+//   - value = ms epoch when the card was tapped (=> assumed arrival)
+//             or null if highlighted but timestamp unknown (legacy data)
+//
+// Migration: older builds stored a plain array (["m74","m366"]); convert
+// to the new object form with null timestamps so legacy highlights survive.
 (function () {
   var STORE_KEY = 'cocodona-as-highlights';
-  var state;
-  try { state = JSON.parse(localStorage.getItem(STORE_KEY) || '[]'); }
-  catch (e) { state = []; }
-  if (!Array.isArray(state)) state = [];
+  var state = {};
+  try {
+    var raw = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+    if (Array.isArray(raw)) {
+      raw.forEach(function (slug) { state[slug] = null; });
+    } else if (raw && typeof raw === 'object') {
+      state = raw;
+    }
+  } catch (e) { state = {}; }
 
-  function paint() {
+  var DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  function fmtRaceTime(d) {
+    var h = d.getHours();
+    var mm = String(d.getMinutes()).padStart(2, '0');
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    return h + ':' + mm + ' ' + ampm + ' ' + DAY_NAMES[d.getDay()];
+  }
+  function fmtDelta(min) {
+    if (min === 0) return 'on the dot';
+    var abs = Math.abs(min);
+    if (abs >= 60) {
+      var h = Math.floor(abs / 60);
+      var m = abs % 60;
+      return h + 'h ' + (m ? m + 'm ' : '') + (min > 0 ? 'ahead' : 'behind');
+    }
+    return abs + ' min ' + (min > 0 ? 'ahead' : 'behind');
+  }
+
+  function paintHighlights() {
+    var ids = Object.keys(state);
     document.querySelectorAll('[data-as]').forEach(function (el) {
-      el.classList.toggle('highlighted', state.indexOf(el.dataset.as) !== -1);
+      el.classList.toggle('highlighted', ids.indexOf(el.dataset.as) !== -1);
     });
   }
-  paint();
+
+  function refreshPace() {
+    var now = new Date();
+    var nowLabel = fmtRaceTime(now);
+    document.querySelectorAll('.card[data-target]').forEach(function (card) {
+      var target = new Date(card.dataset.target);
+      if (isNaN(target.getTime())) return;
+      var slug = card.dataset.as;
+      var arrivedMs = (slug in state) ? state[slug] : undefined;
+      var nowEl = card.querySelector('.pace-now');
+      var statusEl = card.querySelector('.pace-status');
+      if (nowEl) nowEl.textContent = nowLabel;
+      if (!statusEl) return;
+
+      if (typeof arrivedMs === 'number') {
+        // Highlighted with known arrival timestamp — frozen comparison.
+        var arrived = new Date(arrivedMs);
+        var deltaMin = Math.round((target - arrived) / 60000);
+        statusEl.textContent =
+          'Arrived ' + fmtRaceTime(arrived) + ' · ' +
+          (deltaMin >= 0 ? '✓ ' : '⚠ ') + fmtDelta(deltaMin);
+        statusEl.className = 'pace-status ' + (deltaMin >= 0 ? 'pace-ahead' : 'pace-behind');
+      } else if (arrivedMs === null) {
+        // Highlighted but no timestamp (legacy) — fall back to live compare.
+        var liveDelta = Math.round((target - now) / 60000);
+        statusEl.textContent =
+          'Marked arrived (no timestamp) · ' +
+          (liveDelta >= 0 ? '✓ ' : '⚠ ') + fmtDelta(liveDelta) + ' if now';
+        statusEl.className = 'pace-status ' + (liveDelta >= 0 ? 'pace-ahead' : 'pace-behind');
+      } else {
+        // Not marked. Show predictive "would be X if arrived now".
+        var predDelta = Math.round((target - now) / 60000);
+        statusEl.textContent =
+          'Tap card to mark arrived · would be ' + fmtDelta(predDelta) + ' now';
+        statusEl.className = 'pace-status pace-pending';
+      }
+    });
+  }
+
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
+  }
+
+  paintHighlights();
+  refreshPace();
+  setInterval(refreshPace, 60000);
 
   document.addEventListener('click', function (e) {
     var el = e.target.closest('[data-as]');
     if (!el) return;
-    // Don't hijack taps on real anchor links or on nested <summary>
-    // elements (e.g. the drop-bag collapsible inside a card).
+    // Skip clicks on anchors, summaries, or anything inside the nested
+    // gear/pace dropdowns — those have their own behavior.
     if (e.target.closest('a')) return;
     if (e.target.closest('summary')) return;
+    if (e.target.closest('.gear-section, .pace-section')) return;
     var id = el.dataset.as;
-    var idx = state.indexOf(id);
-    if (idx === -1) state.push(id); else state.splice(idx, 1);
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_) {}
-    paint();
+    if (id in state) {
+      delete state[id];
+    } else {
+      state[id] = Date.now();
+    }
+    save();
+    paintHighlights();
+    refreshPace();
   });
 })();
 </script>
