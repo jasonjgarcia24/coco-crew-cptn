@@ -276,12 +276,13 @@ tbody tr:nth-child(even) td { background: var(--pill-bg); }
 /* Click-to-highlight: tap any AS card or at-a-glance row to mark it.
    State persists via localStorage so it survives reload + airplane mode.
    Tapping the card highlights its matching table row too (and vice versa).
-   Color is Material Orange 300 — moderate saturation, dark text stays
-   readable, and it stands out clearly under desert sun. */
+   Color is Material Orange 200 — softer than 300 so the text stays primary
+   while the warm peach still reads clearly against the white and gray
+   zebra rows under desert sun. */
 [data-as] { cursor: pointer; }
 .card[data-as].highlighted,
 tbody tr[data-as].highlighted td {
-  background: #FFB74D;
+  background: #FFCC80;
 }
 
 .fab {
