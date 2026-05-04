@@ -87,7 +87,7 @@ function wrapCardsInBody(body, gearData) {
     const h3match = card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/);
     const slug = h3match ? extractMileSlug(h3match[1]) : null;
     const dataAttr = slug ? ` data-as="${slug}"` : '';
-    const target = extractAGoalTarget(card);
+    const target = extractBGoalTarget(card);
     const targetAttr = target.iso ? ` data-target="${target.iso}"` : '';
     const gear = (gearData && slug) ? renderGearSection(gearData.get(slug)) : '';
     const pace = slug ? renderPaceSection(target) : '';
@@ -197,10 +197,12 @@ function renderGearSection(items) {
 }
 
 // === Pace tracking ===
-// A-GOAL is the realistic target per the race brief, so each AS card gets
-// the A-GOAL arrival time embedded as data-target (ISO 8601). Runtime JS
-// compares wall-clock now (or the click-to-highlight timestamp if marked)
-// against the target to flag on-track / behind.
+// B-GOAL is the worst-acceptable / cutoff-safety target — the deadline you
+// can't slip past. Each AS card gets the B-GOAL arrival time embedded as
+// data-target (ISO 8601). Runtime JS compares wall-clock now (or the
+// click-to-highlight timestamp if marked) against the target to flag
+// on-track / behind. The card's 🟢🟡 bullet still shows FAST and A-GOAL
+// for reference; only the pace section uses B-GOAL.
 
 const RACE_DAY_MAP = {
   Sun: 3, Mon: 4, Tue: 5, Wed: 6, Thu: 7, Fri: 8, Sat: 9, // May 2026 dates
@@ -222,11 +224,11 @@ function parseRaceTime(s) {
   return new Date(2026, 4, date, h, mm); // month index: May = 4
 }
 
-// First 🟢🟡 bullet in a rendered card holds the arrival window:
-// "🟢🟡 6:19 AM Mon - 6:38 AM Mon". The second time is the A-GOAL target.
-function extractAGoalTarget(cardHtml) {
+// 🔴 bullet in a rendered card holds the B-GOAL arrival time:
+// "🔴 7:23 AM Mon".
+function extractBGoalTarget(cardHtml) {
   const m = cardHtml.match(
-    /<li>🟢🟡\s+\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3}\s*-\s*(\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3})\b/
+    /<li>🔴\s+(\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3})\b/
   );
   if (!m) return { iso: null, label: null };
   const date = parseRaceTime(m[1]);

@@ -1,7 +1,7 @@
 ## 🟢 Legend
 
 - 🎒 drop bag · 💤 sleep · 🚿 shower · ⚕️ medic · ⚠️ gear check
-- 🟢 FAST (55h) · 🟡 A-GOAL (69h)
+- 🟢 FAST (55h) · 🟡 A-GOAL (69h) · 🔴 B-GOAL (100h, pace target)
 - 🔥 hot · 🥶 cold · 🏔️ high alt (≥7,000') · 🪨 rocky/technical · ⬆️ steep climb · ⬇️ steep descent
 
 ## 🗺️ Race at a glance
@@ -37,6 +37,7 @@
 ### M0 · Start: Deep Canyon Ranch · 🎒
 
 - 🟢🟡 5:00 AM Mon - 5:00 AM Mon (mass start)
+- 🔴 5:00 AM Mon
 - ⚠️ **4 L water capacity check**
 - → Cottonwood +7.4 mi · — (rolling, +1,423/-1,339)
 - 🎒 next: +36.6 mi → Crown King
@@ -44,6 +45,7 @@
 ### M7.4 · Cottonwood Creek
 
 - 🟢🟡 6:19 AM Mon - 6:38 AM Mon
+- 🔴 7:23 AM Mon
 - ⚠️ **Leave w/ 4 L MIN water**
 - ← Start +7.4 mi
 - → Lane Mtn +25.1 mi · 🔥 🪨 +9,518'/-4,856'
@@ -53,6 +55,7 @@
 ### M32.5 · Lane Mtn · ⚕️
 
 - 🟢🟡 1:20 PM Mon - 3:21 PM Mon
+- 🔴 8:09 PM Mon
 - ← Cottonwood +25.1 mi
 - → Crown King +4.1 mi · +338'/-1,304'
 - 🎒 next: +4.1 mi → Crown King
@@ -60,6 +63,7 @@
 ### M36.6 · Crown King · 🎒⚕️
 
 - 🟢🟡 2:20 PM Mon - 4:38 PM Mon
+- 🔴 10:03 PM Mon
 - **Dropbag rolls to Fort Tuthill M211**
 - ⚠️ **Full kit check: Required + Cold Weather Gear**
 - ← Lane Mtn +4.1 mi
@@ -71,6 +75,7 @@
 ### M51 · Arrastra Creek
 
 - 🟢🟡 4:51 PM Mon - 7:50 PM Mon
+- 🔴 2:45 AM Tue
 - Pass-through, refuel
 - ← Crown King +14.4 mi
 - → Kamp Kipa +9.8 mi · 🥶 +3,012'/-841' 🪨 🏔️
@@ -79,6 +84,7 @@
 ### M60.8 · Kamp Kipa · 🎒💤
 
 - 🟢🟡 6:39 PM Mon - 10:06 PM Mon
+- 🔴 6:05 AM Tue
 - Indoor sleep (NOT used in plan)
 - ← Arrastra +9.8 mi
 - → Camp Wamatochick +6.6 mi · +481'/-1,503'
@@ -87,6 +93,7 @@
 ### M67.4 · Camp Wamatochick · 🎒💤🚿
 
 - 🟢🟡 7:57 PM Mon - 11:47 PM Mon
+- 🔴 8:36 AM Tue
 - **30 min sleep**
 - ← Kamp Kipa +6.6 mi
 - → Whiskey Row +8.2 mi · +438'/-1,491'
@@ -95,6 +102,7 @@
 ### M75.6 · Whiskey Row · 🎒💤⚕️
 
 - 🟢🟡 10:28 PM Mon - 2:46 AM Tue
+- 🔴 11:32 AM Tue
 - Indoor sleep (NOT used in plan)
 - ← Camp Wamatochick +8.2 mi
 - → Watson Lake +7.2 mi
@@ -103,6 +111,7 @@
 ### M82.8 · Watson Lake
 
 - 🟢🟡 11:47 PM Mon - 4:29 AM Tue
+- 🔴 2:06 PM Tue
 - Pass-through
 - ← Whiskey Row +7.2 mi
 - → Fain Ranch +13.7 mi · 🪨 (Granite Dells)
@@ -111,6 +120,7 @@
 ### M96.5 · Fain Ranch · 🎒
 
 - 🟢🟡 2:32 AM Tue - 7:55 AM Tue
+- 🔴 7:09 PM Tue
 - ⚠️ **Full kit check** — IF leaving after 10 AM
 - ← Watson Lake +13.7 mi
 - → Mingus +10.7 mi · 🔥 🏔️ +2,862'/-284' (altitude ~7,800')
@@ -121,6 +131,7 @@
 ### M107.2 · Mingus Mountain (~7,800') · 🎒💤🚿⚕️
 
 - 🟢🟡 5:27 AM Tue - 11:36 AM Tue
+- 🔴 12:35 AM Wed
 - Indoor sleep (NOT used in plan)
 - ← Fain Ranch +10.7 mi
 - → Jerome +17.0 mi · 🔥 🪨 +1,750'/-4,428'
@@ -129,6 +140,7 @@
 ### M124.2 · Jerome
 
 - 🟢🟡 8:59 AM Tue - 3:56 PM Tue
+- 🔴 6:44 AM Wed
 - Pass-through
 - ← Mingus +17.0 mi
 - → Dead Horse +8.7 mi · 🔥 +356'/-1,976' (Verde River)
@@ -137,6 +149,7 @@
 ### M132.9 · Dead Horse · 🎒💤🚿⚕️
 
 - 🟢🟡 10:33 AM Tue - 5:56 PM Tue
+- 🔴 9:40 AM Wed
 - Outdoor sleep (NOT used in plan)
 - ← Jerome +8.7 mi
 - → Deer Pass +14.0 mi · 🪨
@@ -145,6 +158,7 @@
 ### M146.9 · Deer Pass · 🎒
 
 - 🟢🟡 1:19 PM Tue - 9:26 PM Tue
+- 🔴 2:50 PM Wed
 - ← Dead Horse +14.0 mi
 - → Sedona Posse +12.2 mi · 🔥 (water station M153.6)
 - 🎒 next: +12.2 mi → Sedona Posse
@@ -152,6 +166,7 @@
 ### M159.1 · Sedona Posse · 🎒💤⚕️
 
 - 🟢🟡 3:45 PM Tue - 12:32 AM Wed
+- 🔴 7:24 PM Wed
 - **60 min sleep**
 - ⚠️ **Full kit check**
 - ← Deer Pass +12.2 mi
@@ -163,6 +178,7 @@
 ### M176.1 · Schnebly Hill · 🎒⚕️
 
 - 🟢🟡 9:06 PM Tue - 7:07 AM Wed
+- 🔴 5:21 AM Thu
 - Drop bag + medic (no sleep here)
 - ← Sedona Posse +17.0 mi
 - → Munds Park +13.9 mi · 🥶 🏔️ (Coconino Plateau, upper-30s°F)
@@ -171,6 +187,7 @@
 ### M190.0 · Munds Park · 🎒💤⚕️
 
 - 🟢🟡 11:44 PM Tue - 10:27 AM Wed
+- 🔴 10:16 AM Thu
 - Outdoor sleep (NOT used in plan)
 - ⚠️ **Full kit check**
 - ← Schnebly +13.9 mi
@@ -180,6 +197,7 @@
 ### M202.7 · Kelly Canyon
 
 - 🟢🟡 2:01 AM Wed - 1:22 PM Wed
+- 🔴 2:35 PM Thu
 - Pass-through
 - ← Munds +12.7 mi
 - → Fort Tuthill +8.3 mi · 🥶 🏔️
@@ -188,6 +206,7 @@
 ### M211.0 · Fort Tuthill · 🎒💤⚕️
 
 - 🟢🟡 3:26 AM Wed - 3:10 PM Wed
+- 🔴 5:14 PM Thu
 - **30 min sleep**
 - ⚠️ **Full kit check**
 - ⚠️ **Mandatory medic** • Last big AS — EAT!!
@@ -198,6 +217,7 @@
 ### M227.1 · Walnut Canyon · 🎒⚕️
 
 - 🟢🟡 7:02 AM Wed - 7:39 PM Wed
+- 🔴 11:37 PM Thu
 - ← Fort Tuthill +16.1 mi
 - → Wildcat +7.0 mi · 🥶 🏔️
 - 🎒 next: +7.0 mi → Wildcat Hill
@@ -205,6 +225,7 @@
 ### M234.1 · Wildcat Hill · 🎒
 
 - 🟢🟡 8:26 AM Wed - 9:27 PM Wed
+- 🔴 2:18 AM Fri
 - ⚠️ **Last full kit check**
 - ← Walnut +7.0 mi
 - → Trinity +15.3 mi · 🥶 🪨 🏔️ +3,386'/-3,055' (altitude 9,000')
@@ -213,6 +234,7 @@
 ### M249.4 · Trinity Heights
 
 - 🟢🟡 11:18 AM Wed - 1:06 AM Thu
+- 🔴 7:40 AM Fri
 - Last AS, push 3.9 mi
 - ← Wildcat +15.3 mi
 - → 🏁 FINISH +3.9 mi · — (urban gentle)
@@ -222,4 +244,5 @@
 
 - ← Trinity +3.9 mi
 - 🟢🟡 12:00 PM Wed - 2:00 AM Thu
+- 🔴 9:00 AM Fri
 - 🏁 You're done!!
