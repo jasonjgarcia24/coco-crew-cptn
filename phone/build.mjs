@@ -87,10 +87,11 @@ function wrapCardsInBody(body, gearData) {
     const h3match = card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/);
     const slug = h3match ? extractMileSlug(h3match[1]) : null;
     const dataAttr = slug ? ` data-as="${slug}"` : '';
-    const target = extractBGoalTarget(card);
+    const target = extractAGoalTarget(card);
     const targetAttr = target.iso ? ` data-target="${target.iso}"` : '';
+    const bgoalLabel = slug ? B_GOAL_TIMES[slug] : null;
     const gear = (gearData && slug) ? renderGearSection(gearData.get(slug)) : '';
-    const pace = slug ? renderPaceSection(target) : '';
+    const pace = slug ? renderPaceSection(target, bgoalLabel) : '';
     return `<div class="${cls}"${dataAttr}${targetAttr}>${card}${pace}${gear}</div>`;
   });
   return head + cards.join('');
@@ -197,12 +198,38 @@ function renderGearSection(items) {
 }
 
 // === Pace tracking ===
-// B-GOAL is the worst-acceptable / cutoff-safety target — the deadline you
-// can't slip past. Each AS card gets the B-GOAL arrival time embedded as
-// data-target (ISO 8601). Runtime JS compares wall-clock now (or the
-// click-to-highlight timestamp if marked) against the target to flag
-// on-track / behind. The card's 🟢🟡 bullet still shows FAST and A-GOAL
-// for reference; only the pace section uses B-GOAL.
+// A-GOAL is the realistic target — the pace dropdown's status compares
+// the click-to-highlight timestamp (or live now) against this. B-GOAL is
+// shown alongside as a worst-acceptable reference, but doesn't drive the
+// status. A-GOAL is parsed live from the card's 🟢🟡 bullet (second time);
+// B-GOAL is looked up from the static map below, sourced from the Pacing
+// Chart sheet's B-GOAL TOD column. Update this map if the band recomputes.
+
+const B_GOAL_TIMES = {
+  'm0':    '5:00 AM Mon',
+  'm74':   '7:23 AM Mon',
+  'm325':  '8:09 PM Mon',
+  'm366':  '10:03 PM Mon',
+  'm51':   '2:45 AM Tue',
+  'm608':  '6:05 AM Tue',
+  'm674':  '8:36 AM Tue',
+  'm756':  '11:32 AM Tue',
+  'm828':  '2:06 PM Tue',
+  'm965':  '7:09 PM Tue',
+  'm1072': '12:35 AM Wed',
+  'm1242': '6:44 AM Wed',
+  'm1329': '9:40 AM Wed',
+  'm1469': '2:50 PM Wed',
+  'm1591': '7:24 PM Wed',
+  'm1761': '5:21 AM Thu',
+  'm1900': '10:16 AM Thu',
+  'm2027': '2:35 PM Thu',
+  'm2110': '5:14 PM Thu',
+  'm2271': '11:37 PM Thu',
+  'm2341': '2:18 AM Fri',
+  'm2494': '7:40 AM Fri',
+  'm2533': '9:00 AM Fri',
+};
 
 const RACE_DAY_MAP = {
   Sun: 3, Mon: 4, Tue: 5, Wed: 6, Thu: 7, Fri: 8, Sat: 9, // May 2026 dates
@@ -224,11 +251,12 @@ function parseRaceTime(s) {
   return new Date(2026, 4, date, h, mm); // month index: May = 4
 }
 
-// 🔴 bullet in a rendered card holds the B-GOAL arrival time:
-// "🔴 7:23 AM Mon".
-function extractBGoalTarget(cardHtml) {
+// First 🟢🟡 bullet in a rendered card holds the FAST/A-GOAL arrival
+// window: "🟢🟡 6:19 AM Mon - 6:38 AM Mon". The second time is A-GOAL,
+// which drives the pace status comparison.
+function extractAGoalTarget(cardHtml) {
   const m = cardHtml.match(
-    /<li>🔴\s+(\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3})\b/
+    /<li>🟢🟡\s+\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3}\s*-\s*(\d{1,2}:\d{2}\s+(?:AM|PM)\s+\w{3})\b/
   );
   if (!m) return { iso: null, label: null };
   const date = parseRaceTime(m[1]);
@@ -238,13 +266,17 @@ function extractBGoalTarget(cardHtml) {
   };
 }
 
-function renderPaceSection(target) {
+function renderPaceSection(target, bgoalLabel) {
   if (!target.iso) return '';
+  const bgoal = bgoalLabel
+    ? `<div class="pace-row"><span class="pace-label">B-GOAL</span><span class="pace-bgoal">${escapeHtml(bgoalLabel)}</span></div>`
+    : '';
   return `<details class="pace-section">` +
     `<summary class="pace-summary">⏱ Pace</summary>` +
     `<div class="pace-body">` +
       `<div class="pace-row"><span class="pace-label">Now</span><span class="pace-now">—</span></div>` +
-      `<div class="pace-row"><span class="pace-label">Target</span><span class="pace-target">${escapeHtml(target.label)}</span></div>` +
+      `<div class="pace-row"><span class="pace-label">Target (A-GOAL)</span><span class="pace-target">${escapeHtml(target.label)}</span></div>` +
+      bgoal +
       `<div class="pace-status">Tap the card to mark arrived.</div>` +
     `</div>` +
     `</details>`;
@@ -502,8 +534,12 @@ tbody tr[data-as].highlighted td {
   color: var(--fg-soft);
   font-weight: 600;
 }
-.pace-now, .pace-target {
+.pace-now, .pace-target, .pace-bgoal {
   font-variant-numeric: tabular-nums;
+}
+.pace-bgoal {
+  color: var(--fg-soft);
+  font-size: 13px;
 }
 .pace-status {
   margin-top: 6px;
